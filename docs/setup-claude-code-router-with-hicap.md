@@ -65,7 +65,7 @@ Create or edit `C:\Users\<username>\.claude-code-router\config.json`:
 }
 ```
 
-> **Note**: Replace the model placeholders with models available from your Hicap account. You can retrieve the full list at `https://api.hicap.ai/v1/models/all`.
+> **Note**: Replace the model placeholders with models available from your Hicap account. You can view the full list at [hicap.ai/models](https://hicap.ai/models).
 
 ### Configuration Options
 

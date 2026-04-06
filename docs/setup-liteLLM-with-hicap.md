@@ -1,13 +1,18 @@
 ---
 title: "How to Set Up LiteLLM with Hicap"
-date: "2026-04-04"
+date: "2026-04-06"
 author: "Hicap Engineering"
 description: "A step-by-step guide for Hicap customers to configure LiteLLM with the Hicap API."
 ---
 
 # Setting Up LiteLLM with Hicap
 
-This guide walks you through configuring LiteLLM to work with the Hicap API. In this setup, Docker Compose runs LiteLLM and PostgreSQL locally, LiteLLM routes upstream to Hicap's OpenAI-compatible API, and the app uses canonical provider-qualified aliases such as `anthropic/claude-opus-4.6`.
+This guide walks through configuring LiteLLM to work with the Hicap API. In this setup:
+
+- Docker Compose runs LiteLLM and PostgreSQL locally.
+- LiteLLM routes all requests upstream to Hicap's OpenAI-compatible API.
+- Models are registered with canonical provider-qualified names such as `anthropic/claude-opus-4.6` or `google/gemini-2.5-pro`.
+- A runtime override layer preserves those canonical names across UI, analytics, and spend tracking.
 
 ## Prerequisites
 
@@ -15,9 +20,11 @@ This guide walks you through configuring LiteLLM to work with the Hicap API. In 
 - Node.js 20+
 - A valid Hicap API key
 
+---
+
 ## 1. Configure Environment Variables
 
-Create a `.env` file at the repo root and set the required Hicap and LiteLLM values:
+Create a `.env` file at the repo root:
 
 ```env
 HICAP_API_BASE=https://api.hicap.ai/v1
@@ -26,15 +33,18 @@ LITELLM_MASTER_KEY=sk-local-litellm
 DATABASE_URL=postgresql://litellm:litellm@db:5432/litellm
 ```
 
-Notes:
+| Variable | Purpose |
+|---|---|
+| `HICAP_API_BASE` | Points LiteLLM at Hicap's OpenAI-compatible endpoint |
+| `HICAP_API_KEY` | Forwarded upstream in the `api-key` header Hicap expects |
+| `LITELLM_MASTER_KEY` | Used by your app or tests to authenticate to LiteLLM |
+| `DATABASE_URL` | PostgreSQL connection for virtual keys, rate limits, and spend tracking |
 
-- `HICAP_API_BASE` points LiteLLM at Hicap's OpenAI-compatible endpoint.
-- `HICAP_API_KEY` is forwarded upstream in the `api-key` header.
-- `LITELLM_MASTER_KEY` is what your app or local tests use to authenticate to LiteLLM.
+---
 
-## 2. Mount LiteLLM Through Docker Compose
+## 2. Docker Compose
 
-This repo's `docker-compose.yml` mounts the LiteLLM config and override layer into the container:
+The `docker-compose.yml` runs LiteLLM and PostgreSQL and mounts two local files into the container:
 
 ```yaml
 services:
@@ -54,19 +64,65 @@ services:
       - ./docker/litellm-overrides:/app/overrides:ro
 ```
 
-Why this matters:
+| Mount | What it does |
+|---|---|
+| `litellm_config.yaml → /app/config.yaml` | Defines the model routing table and general settings |
+| `docker/litellm-overrides → /app/overrides` | Runtime override layer for canonical naming and Hicap transport (see [Section 5](#5-provider-setup-the-runtime-override-layer)) |
 
-- `litellm_config.yaml` defines the model routing table.
-- `docker/litellm-overrides` contains the runtime override layer used in this repo for canonical naming and Hicap transport fixes.
+`PYTHONPATH: /app/overrides` causes Python to execute `sitecustomize.py` from that directory on every LiteLLM startup, which applies the override patches automatically.
 
-## 3. Define Explicit Hicap Model Aliases
+---
 
-Use explicit provider-qualified aliases in `litellm_config.yaml` instead of relying on wildcard passthrough if you want stable naming, provider metadata, and cleaner UI behavior.
+## 3. Model Catalog
 
-Example:
+All models are declared in `litellm_config.yaml` under `model_list`. Each entry maps a canonical alias to an upstream Hicap route.
+
+### Naming convention
+
+Use provider-qualified names for both `model_name` and `litellm_params.model`:
 
 ```yaml
 model_list:
+  - model_name: anthropic/claude-opus-4.6   # what your app and UI use
+    litellm_params:
+      model: anthropic/claude-opus-4.6       # kept canonical; override layer handles wire rewrite
+      api_base: os.environ/HICAP_API_BASE
+      api_key: os.environ/HICAP_API_KEY
+      extra_headers:
+        api-key: os.environ/HICAP_API_KEY    # Hicap expects this header in addition to Authorization
+```
+
+The `extra_headers.api-key` field is required for every entry. Hicap's API validates the key from this header.
+
+### OpenAI family models
+
+OpenAI-family models (`openai/gpt-*`) require no `model_info` block. LiteLLM's internal pricing map already covers the canonical `openai/*` names, and Hicap routes these through its OpenAI-compatible path without any wire-name rewriting.
+
+```yaml
+  - model_name: openai/gpt-4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_base: os.environ/HICAP_API_BASE
+      api_key: os.environ/HICAP_API_KEY
+      extra_headers:
+        api-key: os.environ/HICAP_API_KEY
+
+  - model_name: openai/gpt-4.1
+    litellm_params:
+      model: openai/gpt-4.1
+      api_base: os.environ/HICAP_API_BASE
+      api_key: os.environ/HICAP_API_KEY
+      extra_headers:
+        api-key: os.environ/HICAP_API_KEY
+```
+
+### Non-OpenAI family models
+
+Non-OpenAI families — Anthropic, Google, MiniMax, Moonshot, Zhipu — require an explicit `model_info` block. LiteLLM's internal pricing map does not cover Hicap-backed aliases for these providers. Without `model_info`, cost tracking will be missing or incorrect in the admin UI and spend logs.
+
+Additionally, at transport time, the runtime override layer rewrites non-OpenAI canonical names to `openai/<suffix>` for the actual Hicap upstream call, then restores canonical names in all metadata responses. This is transparent to your app and the LiteLLM UI.
+
+```yaml
   - model_name: anthropic/claude-opus-4.6
     litellm_params:
       model: anthropic/claude-opus-4.6
@@ -78,45 +134,122 @@ model_list:
       provider: Anthropic
       display_name: Claude Opus 4.6
       max_input_tokens: 200000
+      input_cost_per_token: 0.000005
+      output_cost_per_token: 0.000025
+      cache_read_input_token_cost: 0.0000005
+      cache_creation_input_token_cost: 0.00000625
 ```
 
-Recommended pattern:
+---
 
-- Keep `model_name` canonical and provider-qualified.
-- Keep `litellm_params.model` canonical as well.
-- Add `model_info` where useful for provider labels, display names, token limits, and pricing.
+## 4. Cost Layer
 
-## 4. Understand the Hicap Transport Detail
+Cost metadata lives in the `model_info` block of each non-OpenAI entry. All values are per token in USD.
 
-One important detail in this repo is that canonical aliases are preserved for UI and local app behavior, but some Hicap-backed non-OpenAI families still need OpenAI-style wire model names at transport time.
+### Standard cost fields
 
-In this repository, that is handled by the override layer mounted from `docker/litellm-overrides/sitecustomize.py`.
+| Field | What it covers |
+|---|---|
+| `input_cost_per_token` | Standard prompt token cost |
+| `output_cost_per_token` | Standard completion token cost |
+| `cache_read_input_token_cost` | Cost for tokens served from the provider's prompt cache |
+| `cache_creation_input_token_cost` | Cost for tokens that write to the provider's prompt cache |
 
-That override does two separate jobs:
+### Extended context pricing
 
-- It preserves canonical names in UI-facing and app-facing metadata.
-- It rewrites the temporary outbound LiteLLM deployment to the routed upstream model only when making the actual Hicap request.
+Anthropic and Google models have tiered pricing that changes above certain token thresholds. Use the `_above_200k_tokens` variants when the model supports long-context pricing:
 
-That separation is the reason canonical names work locally without breaking Hicap's OpenAI-compatible upstream call path.
+| Field | When to use |
+|---|---|
+| `input_cost_per_token_above_200k_tokens` | Anthropic models with 200k+ context pricing |
+| `output_cost_per_token_above_200k_tokens` | Anthropic models with 200k+ context pricing |
+| `cache_read_input_token_cost_above_200k_tokens` | Anthropic cache read at 200k+ tier |
+| `input_cost_per_token_above_200k_tokens` | Google Gemini Pro models with long-context pricing |
+| `output_cost_per_token_above_200k_tokens` | Google Gemini Pro models with long-context pricing |
+| `cache_read_input_token_cost_above_200k_tokens` | Google Gemini cache read at long-context tier |
 
-## 5. Start the Stack
+Example for a model with tiered Anthropic pricing:
 
-Install dependencies and start the local services:
+```yaml
+    model_info:
+      provider: Anthropic
+      display_name: Claude Sonnet 4.5
+      max_input_tokens: 200000
+      input_cost_per_token: 0.000003
+      output_cost_per_token: 0.000015
+      cache_read_input_token_cost: 0.0000003
+      cache_creation_input_token_cost: 0.00000375
+      input_cost_per_token_above_200k_tokens: 0.000006
+      output_cost_per_token_above_200k_tokens: 0.0000225
+      cache_read_input_token_cost_above_200k_tokens: 0.0000006
+```
+
+Example for a Google model with long-context pricing:
+
+```yaml
+    model_info:
+      provider: Google
+      display_name: Gemini 2.5 Pro
+      max_input_tokens: 1000000
+      input_cost_per_token: 0.00000125
+      output_cost_per_token: 0.00001
+      cache_read_input_token_cost: 0.000000125
+      input_cost_per_token_above_200k_tokens: 0.0000025
+      output_cost_per_token_above_200k_tokens: 0.000015
+      cache_read_input_token_cost_above_200k_tokens: 0.00000025
+```
+
+Hicap's published model catalog is the authoritative source for all pricing. Do not rely on LiteLLM's internal cost map for Hicap-backed non-OpenAI aliases.
+
+---
+
+## 5. Provider Setup: The Runtime Override Layer
+
+Hicap uses an OpenAI-compatible wire protocol, but non-OpenAI model families (Anthropic, Google, etc.) must be sent with `openai/<model-suffix>` wire names in the actual HTTP request. At the same time, you want canonical names like `anthropic/claude-opus-4.6` to appear everywhere — in your app, in the LiteLLM UI, and in spend logs.
+
+The override layer at `docker/litellm-overrides/sitecustomize.py` handles this separation. It runs automatically on LiteLLM startup via `PYTHONPATH` and applies five patches:
+
+### Request routing patch
+
+Intercepts LiteLLM's router at deployment selection time. For non-OpenAI canonical models, it rewrites the outbound `model` parameter to `openai/<suffix>` for the actual Hicap upstream call, leaving all metadata and response handling using the canonical name.
+
+Only models with unambiguous suffix mappings are rewritten — if the same suffix appears under multiple providers, no rewrite is applied.
+
+### Model info display patch
+
+Patches the three LiteLLM proxy endpoints that serve model metadata (`_get_proxy_model_info`, `_enrich_model_info_with_litellm_data`, `_get_model_group_info`). Ensures that model info responses and the admin UI always show canonical provider-qualified names and provider labels, not `openai` placeholders.
+
+### Spend log display patch
+
+Patches the spend log response builder so that the model name shown in the LiteLLM UI's spend log table is the canonical alias, not the wire model name used at request time.
+
+### Provider breakdown patch
+
+Patches `update_breakdown_metrics` in the daily activity endpoints. Without this, the provider breakdown in usage analytics shows `openai` for all non-OpenAI models. The patch derives the canonical provider from the model name and corrects the breakdown record before aggregation.
+
+### Cache header patch
+
+Adds an HTTP middleware that sets `Cache-Control: no-store` on model metadata and spend log endpoints. This prevents stale model names or spend data from being held in the browser after you update the config or clear usage data.
+
+---
+
+## 6. Start the Stack
 
 ```bash
 npm install
-npm run dev:up
-npm run app:dev
+npm run dev:up      # starts LiteLLM + PostgreSQL, waits for proxy health
+npm run app:dev     # starts the Next.js workbench
 ```
 
-That gives you:
+This gives you:
 
-- LiteLLM on `http://127.0.0.1:4000`
-- The Next.js workbench on `http://127.0.0.1:3000`
+- LiteLLM proxy on `http://127.0.0.1:4000`
+- LiteLLM admin UI on `http://127.0.0.1:4000/ui`
+- Next.js workbench on `http://127.0.0.1:3000`
 
-## 6. Verify LiteLLM Can See the Models
+---
 
-Check that LiteLLM is up and serving the aliases you configured:
+## 7. Verify LiteLLM Can See the Models
 
 ```bash
 curl -H "Authorization: Bearer sk-local-litellm" http://127.0.0.1:4000/models
@@ -124,13 +257,14 @@ curl -H "Authorization: Bearer sk-local-litellm" http://127.0.0.1:4000/models
 
 If this returns no models or errors:
 
-- confirm `.env` was loaded
-- confirm `HICAP_API_KEY` is valid
-- confirm `litellm_config.yaml` is mounted into `/app/config.yaml`
+- Confirm `.env` was loaded by the container
+- Confirm `HICAP_API_KEY` is valid
+- Confirm `litellm_config.yaml` is mounted at `/app/config.yaml`
+- Check container logs: `npm run proxy:logs`
 
-## 7. Verify a Chat Completion Through LiteLLM
+---
 
-Run a chat completion through LiteLLM using one of the configured aliases:
+## 8. Verify a Chat Completion
 
 ```bash
 curl -X POST http://127.0.0.1:4000/v1/chat/completions \
@@ -143,70 +277,77 @@ curl -X POST http://127.0.0.1:4000/v1/chat/completions \
   }'
 ```
 
-If the request succeeds, the LiteLLM-to-Hicap path is working.
+A successful response confirms the full LiteLLM → Hicap path is working, including the canonical-to-wire model name rewrite.
 
-## 8. Optional: Use the Local Workbench
+---
 
-The sample app in this repo provides a useful verification surface:
+## 9. Optional: Use the Local Workbench
 
-- browse models from LiteLLM and Hicap
-- send normal or streaming chat requests
-- inspect the last request and response payloads
-- confirm model naming, usage metadata, and provider display behavior
+The Next.js app at `http://127.0.0.1:3000` provides a useful verification surface:
 
-Open:
+- Browse and search models from LiteLLM and Hicap
+- Send normal or streaming chat requests
+- Inspect last request and response payloads
+- Confirm model naming, usage metadata, and provider display behavior
 
-- `http://127.0.0.1:3000`
-- `http://127.0.0.1:3000/docs`
+---
 
 ## Operational Notes
 
 ### Auth layers
 
-- Your local app authenticates to LiteLLM with `LITELLM_MASTER_KEY`.
-- LiteLLM authenticates upstream to Hicap with `HICAP_API_KEY`.
+- Your app authenticates to LiteLLM with `LITELLM_MASTER_KEY`.
+- LiteLLM authenticates upstream to Hicap with `HICAP_API_KEY`, forwarded in the `api-key` header.
 
-### Canonical naming
+### Adding a new model
 
-- Public model names, local app model names, and LiteLLM-facing model names are best kept canonical and provider-qualified.
-- In this repo, those names are intentionally preserved for UI correctness.
+1. Add the entry to `litellm_config.yaml` with a canonical `model_name`.
+2. Include `model_info` with cost fields if the model is non-OpenAI family.
+3. Restart LiteLLM: `docker compose restart litellm`.
+4. Verify with `npm run proxy:models`.
 
-### Metadata
+### Updating cost data
 
-- Hicap's published model catalog is the authoritative source for display metadata such as provider, context window, and pricing.
-- LiteLLM's own internal pricing/model-cost map is not sufficient for all Hicap-backed aliases.
+Costs change as providers update pricing. To update:
 
-### Usage analytics
+1. Edit the relevant `model_info` cost fields in `litellm_config.yaml`.
+2. Restart LiteLLM.
+3. Clear any browser-cached model metadata if the admin UI shows stale values.
 
-- LiteLLM admin surfaces do not all use the same backend fields.
-- Model info, request details, spend logs, and daily activity may each need separate normalization if you want canonical provider names everywhere.
+---
 
 ## Troubleshooting
 
 ### `/models` is empty or incomplete
 
-- Check `HICAP_API_KEY`.
-- Check that the container has the right `.env` values.
-- Check `docker compose logs litellm`.
+- Check `HICAP_API_KEY` in the running container: `docker compose exec litellm env | grep HICAP`.
+- Check `docker compose logs litellm` for config parse errors.
+- Confirm the config file is mounted: `docker compose exec litellm cat /app/config.yaml`.
 
 ### Chat requests fail for non-OpenAI model families
 
-- Check that the alias exists in `litellm_config.yaml`.
-- Check that the runtime override layer is mounted through `docker-compose.yml`.
-- Check whether the upstream call path still needs routed OpenAI-style wire model names.
+- Confirm the alias exists in `litellm_config.yaml`.
+- Confirm the runtime override layer is mounted: `docker compose exec litellm ls /app/overrides/`.
+- Check LiteLLM logs for routing or upstream errors.
 
-### LiteLLM UI shows stale provider or spend data
+### Provider column shows "openai" in usage analytics
 
-- Clear historical usage data if you are validating new naming behavior.
-- Disable caching on the affected endpoints if the browser is holding stale responses.
+- Confirm the override layer is mounted and `PYTHONPATH=/app/overrides` is set.
+- Check that the provider breakdown patch applied: look for `Applied Hicap provider breakdown patch` in the container startup logs.
+- Clear historical usage data if you are validating new config — old records retain their original provider values.
 
-### The sample app looks correct but LiteLLM admin UI does not
+### LiteLLM UI shows stale model names or spend data
 
-- Inspect the LiteLLM endpoints directly.
-- Different admin UI surfaces can consume different backend routes and may need separate fixes.
+- The cache header patch disables browser caching on metadata endpoints, but hard-refresh (`Ctrl+Shift+R`) if stale data persists.
+- Different admin UI surfaces consume different backend routes. Inspect LiteLLM API responses directly if the UI does not match.
+
+### Spend log shows wire model names instead of canonical names
+
+- Confirm the spend log alias patch applied: look for `Applied Hicap spend-log alias display patch` in container startup logs.
+- The patch applies at response build time, so only new spend log requests benefit — existing cached browser responses may show old names until a hard-refresh.
 
 ---
 
-For the latest setup instructions, see: https://github.com/BerriAI/litellm
+For the latest LiteLLM documentation, see: https://github.com/BerriAI/litellm
 
 Questions? Reach out to [Hicap support](mailto:support@hicap.ai) or open an issue in the repository.

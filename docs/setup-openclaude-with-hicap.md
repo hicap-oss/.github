@@ -13,7 +13,7 @@ This guide walks you through configuring [OpenClaude](https://github.com/Gitlawb
 
 - Node.js and npm installed locally
 - A Hicap API key from [platform.hicap.ai](https://platform.hicap.ai)
-- A Hicap model ID you want OpenClaude to use
+- A Hicap model ID you want OpenClaude to use, such as `gpt-5.5`
 
 ## 1. Install OpenClaude
 
@@ -41,13 +41,15 @@ The custom provider flow asks for these fields in order:
 | --- | --- |
 | Provider name | `Hicap` |
 | Base URL | `https://api.hicap.ai/v1` |
-| Default model | Your Hicap model ID |
-| API mode | `Chat Completions` |
+| Default model | `gpt-5.5` |
+| API mode | `Responses` for OpenAI-family models like `gpt-5.5`; `Chat Completions` for broad OpenAI-compatible support |
 | Auth header | `api-key` |
 | Auth header value | Your Hicap API key |
 | API key | Leave blank |
 
 Hicap authenticates with the `api-key` header, so put your key in **Auth header value** and leave the final **API key** field empty.
+
+For OpenAI-family models, Hicap supports the Responses API mode in OpenClaude. For non-OpenAI families or when you want the widest OpenAI-compatible behavior, choose **Chat Completions**.
 
 ## 4. Save and Use Hicap
 

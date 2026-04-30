@@ -520,7 +520,7 @@
     "endpoints": ["chat", "completion"],
     "pricing": {
       "input": "$1.25 / 1M tokens",
-      "output": "$10 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
       "cache": "$0.125 / 1M tokens",
       "longContextThreshold": 200000,
       "longContextInput": "$2.50 / 1M tokens",
@@ -542,12 +542,12 @@
     "capabilities": ["text", "vision", "function-calling", "streaming"],
     "endpoints": ["chat", "completion"],
     "pricing": {
-      "input": "$0.3 / 1M tokens",
-      "output": "$2.5 / 1M tokens",
+      "input": "$0.30 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
       "cache": "$0.03 / 1M tokens",
       "longContextThreshold": 200000,
-      "longContextInput": "$0.3 / 1M tokens",
-      "longContextOutput": "$2.5 / 1M tokens",
+      "longContextInput": "$0.30 / 1M tokens",
+      "longContextOutput": "$2.50 / 1M tokens",
       "longContextCache": "$0.03 / 1M tokens"
     },
     "version": "2025-11-04",
@@ -565,12 +565,12 @@
     "capabilities": ["text", "vision", "streaming"],
     "endpoints": ["chat", "completion"],
     "pricing": {
-      "input": "$0.1 / 1M tokens",
-      "output": "$0.4 / 1M tokens",
+      "input": "$0.10 / 1M tokens",
+      "output": "$0.40 / 1M tokens",
       "cache": "$0.01 / 1M tokens",
       "longContextThreshold": 200000,
-      "longContextInput": "$0.1 / 1M tokens",
-      "longContextOutput": "$0.4 / 1M tokens",
+      "longContextInput": "$0.10 / 1M tokens",
+      "longContextOutput": "$0.40 / 1M tokens",
       "longContextCache": "$0.01 / 1M tokens"
     },
     "version": "2025-11-04",
@@ -636,18 +636,18 @@
   },
   {
     "id": "gemini-2.5-flash-preview",
-    "name": "Gemini 2.5 Flash",
+    "name": "Gemini 2.5 Flash Preview",
     "provider": "Google",
     "description": "Preview release of Gemini 2.5 Flash with latest experimental features.",
     "capabilities": ["text", "vision", "function-calling", "streaming"],
     "endpoints": ["chat", "completion"],
     "pricing": {
-      "input": "$0.3 / 1M tokens",
-      "output": "$2.5 / 1M tokens",
+      "input": "$0.30 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
       "cache": "$0.03 / 1M tokens",
       "longContextThreshold": 200000,
-      "longContextInput": "$0.3 / 1M tokens",
-      "longContextOutput": "$2.5 / 1M tokens",
+      "longContextInput": "$0.30 / 1M tokens",
+      "longContextOutput": "$2.50 / 1M tokens",
       "longContextCache": "$0.03 / 1M tokens"
     },
     "version": "2025-11-04",
@@ -687,7 +687,7 @@
   },
   {
     "id": "gemini-3.1-pro-preview",
-    "name": "Gemini 3.1 Pro",
+    "name": "Gemini 3.1 Pro Preview",
     "provider": "Google",
     "description": "Preview release of Gemini 3.1 Pro with cutting-edge experimental features.",
     "capabilities": [
@@ -772,7 +772,7 @@
     "provider": "OpenAI",
     "description": "The latest GPT-5.3 chat model with cutting-edge conversational intelligence.",
     "capabilities": ["text", "vision", "function-calling", "streaming"],
-    "endpoints": ["chat", "completion"],
+    "endpoints": ["chat"],
     "pricing": {
       "input": "$1.75 / 1M tokens",
       "output": "$14.00 / 1M tokens",

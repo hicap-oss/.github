@@ -1,5 +1,24 @@
 [
   {
+    "id": "gpt-5.5",
+    "name": "GPT-5.5",
+    "provider": "OpenAI",
+    "description": "OpenAI's newest frontier model for complex professional work, agentic coding, and advanced reasoning workflows.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$30.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens"
+    },
+    "version": "2026-04-24",
+    "contextWindow": "1.05M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "gpt-5.2",
     "name": "GPT-5.2",
     "provider": "OpenAI",
@@ -250,14 +269,12 @@
     "capabilities": ["text", "vision", "function-calling", "streaming"],
     "endpoints": ["chat"],
     "pricing": {
-      "input": "$3 / 1M tokens",
-      "output": "$15 / 1M tokens",
-      "cache": "$0.30 / 1M tokens",
-      "cacheWrite": "$3.75 / 1M tokens",
+      "input": "$3.00 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
       "longContextThreshold": 200000,
       "longContextInput": "$6.00 / 1M tokens",
-      "longContextOutput": "$22.50 / 1M tokens",
-      "longContextCache": "$0.60 / 1M tokens"
+      "longContextOutput": "$22.50 / 1M tokens"
     },
     "version": "2025-12-19",
     "contextWindow": "200K tokens",
@@ -276,8 +293,7 @@
     "pricing": {
       "input": "$1.00 / 1M tokens",
       "output": "$5.00 / 1M tokens",
-      "cache": "$0.10 / 1M tokens",
-      "cacheWrite": "$1.25 / 1M tokens"
+      "cache": "$0.10 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -296,7 +312,10 @@
       "input": "$5.00 / 1M tokens",
       "output": "$25.00 / 1M tokens",
       "cache": "$0.50 / 1M tokens",
-      "cacheWrite": "$6.25 / 1M tokens"
+      "cacheWrite": "$6.25 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$5.00 / 1M tokens",
+      "longContextOutput": "$25.00 / 1M tokens"
     },
     "version": "2025-12-19",
     "contextWindow": "200K tokens",
@@ -316,7 +335,11 @@
       "input": "$5.00 / 1M tokens",
       "output": "$25.00 / 1M tokens",
       "cache": "$0.50 / 1M tokens",
-      "cacheWrite": "$6.25 / 1M tokens"
+      "cacheWrite": "$6.25 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$10.00 / 1M tokens",
+      "longContextOutput": "$37.50 / 1M tokens",
+      "longContextCache": "$1.00 / 1M tokens"
     },
     "version": "2026-02-05",
     "contextWindow": "200K tokens",
@@ -335,12 +358,7 @@
     "pricing": {
       "input": "$3.00 / 1M tokens",
       "output": "$15.00 / 1M tokens",
-      "cache": "$0.30 / 1M tokens",
-      "cacheWrite": "$3.75 / 1M tokens",
-      "longContextThreshold": 200000,
-      "longContextInput": "$6.00 / 1M tokens",
-      "longContextOutput": "$22.50 / 1M tokens",
-      "longContextCache": "$0.60 / 1M tokens"
+      "cache": "$0.30 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -358,8 +376,7 @@
     "pricing": {
       "input": "$15.00 / 1M tokens",
       "output": "$75.00 / 1M tokens",
-      "cache": "$1.50 / 1M tokens",
-      "cacheWrite": "$18.75 / 1M tokens"
+      "cache": "$1.50 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -377,8 +394,7 @@
     "pricing": {
       "input": "$15.00 / 1M tokens",
       "output": "$75.00 / 1M tokens",
-      "cache": "$1.50 / 1M tokens",
-      "cacheWrite": "$18.75 / 1M tokens"
+      "cache": "$1.50 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -396,8 +412,7 @@
     "pricing": {
       "input": "$3.00 / 1M tokens",
       "output": "$15.00 / 1M tokens",
-      "cache": "$0.30 / 1M tokens",
-      "cacheWrite": "$3.75 / 1M tokens"
+      "cache": "$0.30 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -415,8 +430,7 @@
     "pricing": {
       "input": "$3.00 / 1M tokens",
       "output": "$15.00 / 1M tokens",
-      "cache": "$0.30 / 1M tokens",
-      "cacheWrite": "$3.75 / 1M tokens"
+      "cache": "$0.30 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -434,8 +448,7 @@
     "pricing": {
       "input": "$0.80 / 1M tokens",
       "output": "$4.00 / 1M tokens",
-      "cache": "$0.08 / 1M tokens",
-      "cacheWrite": "$1.00 / 1M tokens"
+      "cache": "$0.08 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "200K tokens",
@@ -465,7 +478,7 @@
       "longContextOutput": "$18.00 / 1M tokens",
       "longContextCache": "$0.40 / 1M tokens"
     },
-    "version": "2025-12-19",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "64K",
@@ -481,9 +494,14 @@
     "endpoints": ["chat", "completion"],
     "pricing": {
       "input": "$2.00 / 1M tokens",
-      "output": "$12.00 / 1M tokens"
+      "output": "$120.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$120.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
     },
-    "version": "2025-01-27",
+    "version": "2026-04-18",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "64K",
@@ -499,9 +517,13 @@
     "pricing": {
       "input": "$0.50 / 1M tokens",
       "output": "$3.00 / 1M tokens",
-      "cache": "$0.05 / 1M tokens"
+      "cache": "$0.05 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.50 / 1M tokens",
+      "longContextOutput": "$3.00 / 1M tokens",
+      "longContextCache": "$0.05 / 1M tokens"
     },
-    "version": "2025-12-19",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "64K",
@@ -523,7 +545,7 @@
       "longContextOutput": "$15.00 / 1M tokens",
       "longContextCache": "$0.25 / 1M tokens"
     },
-    "version": "2025-11-04",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "64K",
@@ -540,9 +562,13 @@
     "pricing": {
       "input": "$0.30 / 1M tokens",
       "output": "$2.50 / 1M tokens",
-      "cache": "$0.03 / 1M tokens"
+      "cache": "$0.03 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.30 / 1M tokens",
+      "longContextOutput": "$2.50 / 1M tokens",
+      "longContextCache": "$0.03 / 1M tokens"
     },
-    "version": "2025-11-04",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "65K",
@@ -559,9 +585,13 @@
     "pricing": {
       "input": "$0.10 / 1M tokens",
       "output": "$0.40 / 1M tokens",
-      "cache": "$0.01 / 1M tokens"
+      "cache": "$0.01 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.10 / 1M tokens",
+      "longContextOutput": "$0.40 / 1M tokens",
+      "longContextCache": "$0.01 / 1M tokens"
     },
-    "version": "2025-11-04",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "64K",
@@ -579,7 +609,7 @@
       "output": "$0.40 / 1M tokens",
       "cache": "$0.025 / 1M tokens"
     },
-    "version": "2025-11-04",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "8K",
@@ -592,11 +622,8 @@
     "description": "Efficient Gemini 2.0 variant for high-volume use cases.",
     "capabilities": ["text", "streaming"],
     "endpoints": ["chat", "completion"],
-    "pricing": {
-      "input": "$0.075 / 1M tokens",
-      "output": "$0.30 / 1M tokens"
-    },
-    "version": "2025-11-04",
+    "pricing": { "input": "$0.075 / 1M tokens", "output": "$0.30 / 1M tokens" },
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "8K",
@@ -613,7 +640,11 @@
       "input": "$3.00 / 1M tokens",
       "output": "$15.00 / 1M tokens",
       "cache": "$0.30 / 1M tokens",
-      "cacheWrite": "$3.75 / 1M tokens"
+      "cacheWrite": "$3.75 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$6.00 / 1M tokens",
+      "longContextOutput": "$22.50 / 1M tokens",
+      "longContextCache": "$0.60 / 1M tokens"
     },
     "version": "2026-02-17",
     "contextWindow": "200K tokens",
@@ -632,9 +663,13 @@
     "pricing": {
       "input": "$0.30 / 1M tokens",
       "output": "$2.50 / 1M tokens",
-      "cache": "$0.03 / 1M tokens"
+      "cache": "$0.03 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.30 / 1M tokens",
+      "longContextOutput": "$2.50 / 1M tokens",
+      "longContextCache": "$0.03 / 1M tokens"
     },
-    "version": "2025-11-04",
+    "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "65K",
@@ -722,10 +757,7 @@
     "description": "Zhipu's flagship large language model with strong bilingual capabilities in Chinese and English.",
     "capabilities": ["text", "function-calling", "streaming"],
     "endpoints": ["chat", "completion"],
-    "pricing": {
-      "input": "$1.00 / 1M tokens",
-      "output": "$3.20 / 1M tokens"
-    },
+    "pricing": { "input": "$1.00 / 1M tokens", "output": "$3.20 / 1M tokens" },
     "version": "2026-02-20",
     "contextWindow": "128K tokens",
     "availability": "Available",
@@ -778,10 +810,7 @@
     "pricing": {
       "input": "$2.50 / 1M tokens",
       "output": "$15.00 / 1M tokens",
-      "cache": "$0.25 / 1M tokens",
-      "longContextThreshold": 272000,
-      "longContextInput": "$5.00 / 1M tokens",
-      "longContextOutput": "$22.50 / 1M tokens"
+      "cache": "$0.25 / 1M tokens"
     },
     "version": "2026-03-05",
     "contextWindow": "1.05M tokens",
@@ -797,11 +826,8 @@
     "description": "Preview Gemini 3.1 Flash with advanced image generation and understanding capabilities.",
     "capabilities": ["text", "vision", "streaming"],
     "endpoints": ["chat", "completion"],
-    "pricing": {
-      "input": "$0.50 / 1M tokens",
-      "output": "$3.00 / 1M tokens"
-    },
-    "version": "2026-02-26",
+    "pricing": { "input": "$0.50 / 1M tokens", "output": "$60.00 / 1M tokens" },
+    "version": "2026-04-18",
     "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "8K",
@@ -814,10 +840,7 @@
     "description": "A 230B MoE model with 10B active parameters, trained via large-scale reinforcement learning across 200,000+ real-world environments. SOTA in coding, agentic tool use, search, and office productivity workflows.",
     "capabilities": ["text", "function-calling", "streaming"],
     "endpoints": ["chat", "completion"],
-    "pricing": {
-      "input": "$0.30 / 1M tokens",
-      "output": "$1.20 / 1M tokens"
-    },
+    "pricing": { "input": "$0.30 / 1M tokens", "output": "$1.20 / 1M tokens" },
     "version": "2026-03-05",
     "contextWindow": "205K tokens",
     "availability": "Available",
@@ -835,10 +858,7 @@
       "input": "$0.17 / 1K chars",
       "output": "$0.18 / 1K chars over 1K"
     },
-    "pricingDisplay": {
-      "inputLabel": "Base",
-      "outputLabel": "Overage"
-    },
+    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
     "version": "2026-04-01",
     "contextWindow": "5,000 chars",
     "availability": "Available",
@@ -860,10 +880,7 @@
       "input": "$0.17 / 1K chars",
       "output": "$0.18 / 1K chars over 1K"
     },
-    "pricingDisplay": {
-      "inputLabel": "Base",
-      "outputLabel": "Overage"
-    },
+    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
     "version": "2026-04-01",
     "contextWindow": "10,000 chars",
     "availability": "Available",
@@ -885,10 +902,7 @@
       "input": "$0.30 / audio hour",
       "output": "$0.33 / audio hour after first hour"
     },
-    "pricingDisplay": {
-      "inputLabel": "Base",
-      "outputLabel": "Overage"
-    },
+    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
     "version": "2026-04-04",
     "contextWindow": "90+ languages",
     "availability": "Available",
@@ -910,10 +924,7 @@
       "input": "$0.30 / audio hour",
       "output": "$0.33 / audio hour after first hour"
     },
-    "pricingDisplay": {
-      "inputLabel": "Base",
-      "outputLabel": "Overage"
-    },
+    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
     "version": "2026-04-04",
     "contextWindow": "90+ languages",
     "availability": "Available",
@@ -922,6 +933,696 @@
       "primaryLabel": "Languages",
       "secondaryLabel": "Features"
     },
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-image-2",
+    "name": "GPT Image 2",
+    "provider": "OpenAI",
+    "description": "OpenAI's latest image generation model for high-quality visual creation workflows.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["image"],
+    "pricing": {
+      "input": "$8.00 / 1M tokens",
+      "output": "$30.00 / 1M tokens",
+      "cache": "$2.00 / 1M tokens"
+    },
+    "version": "2026-04-24",
+    "contextWindow": "Image generation",
+    "availability": "Available",
+    "maxTokens": "Image output",
+    "specDisplay": { "primaryLabel": "Modality", "secondaryLabel": "Output" },
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "claude-opus-4.7",
+    "name": "Claude Opus 4.7",
+    "provider": "Anthropic",
+    "description": "Latest Claude Opus model for enterprise-grade reasoning, coding, and agentic workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$25.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "cacheWrite": "$6.25 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$5.00 / 1M tokens",
+      "longContextOutput": "$25.00 / 1M tokens",
+      "longContextCache": "$0.50 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-2.5-pro-batch",
+    "name": "Gemini 2.5 Pro Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 2.5 Pro model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.625 / 1M tokens",
+      "output": "$5.00 / 1M tokens",
+      "cache": "$0.125 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$1.25 / 1M tokens",
+      "longContextOutput": "$7.50 / 1M tokens",
+      "longContextCache": "$0.25 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3-pro-preview-batch",
+    "name": "Gemini 3 Pro Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3 Pro model for asynchronous high-volume workloads.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$9.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3-pro-preview",
+    "name": "AI Studio Gemini 3 Pro",
+    "provider": "Google",
+    "description": "AI Studio Gemini 3 Pro variant priced for Google AI Studio usage.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$12.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$18.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3-pro-preview-batch",
+    "name": "AI Studio Gemini 3 Pro",
+    "provider": "Google",
+    "description": "Batch-priced AI Studio Gemini 3 Pro model for asynchronous high-volume workloads.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$9.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3-pro-image-preview-batch",
+    "name": "Gemini 3 Pro Image Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3 Pro Image model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$60.00 / 1M tokens",
+      "cache": "$0.10 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$60.00 / 1M tokens",
+      "longContextCache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-04-18",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3-pro-image-preview",
+    "name": "AI Studio Gemini 3 Pro Image",
+    "provider": "Google",
+    "description": "AI Studio Gemini 3 Pro Image variant priced for Google AI Studio usage.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$120.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$120.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-18",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3-pro-image-preview-batch",
+    "name": "AI Studio Gemini 3 Pro Image",
+    "provider": "Google",
+    "description": "Batch-priced AI Studio Gemini 3 Pro Image model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$60.00 / 1M tokens",
+      "cache": "$0.10 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$60.00 / 1M tokens",
+      "longContextCache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-04-18",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3-flash-preview-batch",
+    "name": "Gemini 3 Flash Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3 Flash model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.25 / 1M tokens",
+      "output": "$1.50 / 1M tokens",
+      "cache": "$0.05 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.25 / 1M tokens",
+      "longContextOutput": "$1.50 / 1M tokens",
+      "longContextCache": "$0.05 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3-flash-preview",
+    "name": "AI Studio Gemini 3 Flash",
+    "provider": "Google",
+    "description": "AI Studio Gemini 3 Flash variant priced for Google AI Studio usage.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.50 / 1M tokens",
+      "output": "$3.00 / 1M tokens",
+      "cache": "$0.05 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.50 / 1M tokens",
+      "longContextOutput": "$3.00 / 1M tokens",
+      "longContextCache": "$0.05 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3-flash-preview-batch",
+    "name": "AI Studio Gemini 3 Flash",
+    "provider": "Google",
+    "description": "Batch-priced AI Studio Gemini 3 Flash model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.25 / 1M tokens",
+      "output": "$1.50 / 1M tokens",
+      "cache": "$0.05 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.25 / 1M tokens",
+      "longContextOutput": "$1.50 / 1M tokens",
+      "longContextCache": "$0.05 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-2.5-flash-batch",
+    "name": "Gemini 2.5 Flash Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 2.5 Flash model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.15 / 1M tokens",
+      "output": "$1.25 / 1M tokens",
+      "cache": "$0.03 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.15 / 1M tokens",
+      "longContextOutput": "$1.25 / 1M tokens",
+      "longContextCache": "$0.03 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "65K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-2.5-flash-preview-batch",
+    "name": "Gemini 2.5 Flash Preview Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 2.5 Flash Preview model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.15 / 1M tokens",
+      "output": "$1.25 / 1M tokens",
+      "cache": "$0.03 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.15 / 1M tokens",
+      "longContextOutput": "$1.25 / 1M tokens",
+      "longContextCache": "$0.03 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "65K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-2.5-flash-lite-batch",
+    "name": "Gemini 2.5 Flash Lite Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 2.5 Flash Lite model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.05 / 1M tokens",
+      "output": "$0.20 / 1M tokens",
+      "cache": "$0.01 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.05 / 1M tokens",
+      "longContextOutput": "$0.20 / 1M tokens",
+      "longContextCache": "$0.01 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-2.0-flash-batch",
+    "name": "Gemini 2.0 Flash Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 2.0 Flash model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.05 / 1M tokens",
+      "output": "$0.20 / 1M tokens",
+      "cache": "$0.025 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-2.0-flash-lite-batch",
+    "name": "Gemini 2.0 Flash Lite Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 2.0 Flash Lite model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.0375 / 1M tokens",
+      "output": "$0.15 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.1-pro-batch",
+    "name": "Gemini 3.1 Pro Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3.1 Pro model for asynchronous high-volume workloads.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$9.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.1-pro-preview-batch",
+    "name": "Gemini 3.1 Pro Preview Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3.1 Pro Preview model for asynchronous high-volume workloads.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$9.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3.1-pro-preview",
+    "name": "AI Studio Gemini 3.1 Pro Preview",
+    "provider": "Google",
+    "description": "AI Studio Gemini 3.1 Pro Preview variant priced for Google AI Studio usage.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$12.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$18.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-02-19",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3.1-pro-preview-batch",
+    "name": "AI Studio Gemini 3.1 Pro Preview",
+    "provider": "Google",
+    "description": "Batch-priced AI Studio Gemini 3.1 Pro Preview model for asynchronous high-volume workloads.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$9.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "kimi-k2.6",
+    "name": "Kimi K2.6",
+    "provider": "Moonshot",
+    "description": "Moonshot's latest Kimi model with strong long-context reasoning and agentic tool-use capabilities.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.95 / 1M tokens",
+      "output": "$4.00 / 1M tokens",
+      "cache": "$0.16 / 1M tokens"
+    },
+    "version": "2026-04-26",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.3-chat",
+    "name": "GPT-5.3 Chat",
+    "provider": "OpenAI",
+    "description": "OpenAI GPT 5.3 Chat model available through Hicap.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.75 / 1M tokens",
+      "output": "$14.00 / 1M tokens",
+      "cache": "$0.175 / 1M tokens"
+    },
+    "version": "2026-03-04",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.5-pro",
+    "name": "GPT-5.5 Pro",
+    "provider": "OpenAI",
+    "description": "Higher-compute GPT-5.5 variant for the most demanding reasoning and precision workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$30.00 / 1M tokens",
+      "output": "$180.00 / 1M tokens"
+    },
+    "version": "2026-04-24",
+    "contextWindow": "1.05M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.1-flash-image-preview-batch",
+    "name": "Gemini 3.1 Flash Image Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3.1 Flash Image model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": { "input": "$0.25 / 1M tokens", "output": "$30.00 / 1M tokens" },
+    "version": "2026-04-18",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3.1-flash-image-preview",
+    "name": "AI Studio Gemini 3.1 Flash Image",
+    "provider": "Google",
+    "description": "AI Studio Gemini 3.1 Flash Image variant priced for Google AI Studio usage.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": { "input": "$0.50 / 1M tokens", "output": "$60.00 / 1M tokens" },
+    "version": "2026-04-18",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3.1-flash-image-preview-batch",
+    "name": "AI Studio Gemini 3.1 Flash Image",
+    "provider": "Google",
+    "description": "Batch-priced AI Studio Gemini 3.1 Flash Image model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": { "input": "$0.25 / 1M tokens", "output": "$30.00 / 1M tokens" },
+    "version": "2026-04-18",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.1-flash-lite-preview",
+    "name": "Gemini 3.1 Flash Lite Preview",
+    "provider": "Google",
+    "description": "Google Gemini 3.1 Flash Lite Preview model available through Hicap.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.25 / 1M tokens",
+      "output": "$1.50 / 1M tokens",
+      "cache": "$0.025 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.25 / 1M tokens",
+      "longContextOutput": "$1.50 / 1M tokens",
+      "longContextCache": "$0.025 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.1-flash-lite-preview-batch",
+    "name": "Gemini 3.1 Flash Lite Preview Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3.1 Flash Lite Preview model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.125 / 1M tokens",
+      "output": "$0.75 / 1M tokens",
+      "cache": "$0.0125 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.125 / 1M tokens",
+      "longContextOutput": "$0.75 / 1M tokens",
+      "longContextCache": "$0.0125 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3.1-flash-lite-preview",
+    "name": "AI Studio Gemini 3.1 Flash Lite Preview",
+    "provider": "Google",
+    "description": "AI Studio Gemini 3.1 Flash Lite Preview variant priced for Google AI Studio usage.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.25 / 1M tokens",
+      "output": "$1.50 / 1M tokens",
+      "cache": "$0.025 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.25 / 1M tokens",
+      "longContextOutput": "$1.50 / 1M tokens",
+      "longContextCache": "$0.025 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "aistudio/gemini-3.1-flash-lite-preview-batch",
+    "name": "AI Studio Gemini 3.1 Flash Lite Preview",
+    "provider": "Google",
+    "description": "Batch-priced AI Studio Gemini 3.1 Flash Lite Preview model for asynchronous high-volume workloads.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.125 / 1M tokens",
+      "output": "$0.75 / 1M tokens",
+      "cache": "$0.0125 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$0.125 / 1M tokens",
+      "longContextOutput": "$0.75 / 1M tokens",
+      "longContextCache": "$0.0125 / 1M tokens"
+    },
+    "version": "2026-04-16",
+    "contextWindow": "1M tokens",
+    "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "deepseek-v3.2",
+    "name": "DeepSeek V3.2",
+    "provider": "DeepSeek",
+    "description": "DeepSeek's latest general-purpose reasoning and coding model for cost-efficient production workloads.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": { "input": "$0.58 / 1M tokens", "output": "$1.68 / 1M tokens" },
+    "version": "2026-03-27",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
     "tags": ["Pay-Go"]
   }
 ]

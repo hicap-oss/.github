@@ -499,11 +499,7 @@
     "pricing": {
       "input": "$0.50 / 1M tokens",
       "output": "$3.00 / 1M tokens",
-      "cache": "$0.05 / 1M tokens",
-      "longContextThreshold": 200000,
-      "longContextInput": "$0.50 / 1M tokens",
-      "longContextOutput": "$3.00 / 1M tokens",
-      "longContextCache": "$0.05 / 1M tokens"
+      "cache": "$0.05 / 1M tokens"
     },
     "version": "2025-12-19",
     "contextWindow": "1M tokens",
@@ -544,11 +540,7 @@
     "pricing": {
       "input": "$0.30 / 1M tokens",
       "output": "$2.50 / 1M tokens",
-      "cache": "$0.03 / 1M tokens",
-      "longContextThreshold": 200000,
-      "longContextInput": "$0.30 / 1M tokens",
-      "longContextOutput": "$2.50 / 1M tokens",
-      "longContextCache": "$0.03 / 1M tokens"
+      "cache": "$0.03 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "1M tokens",
@@ -567,11 +559,7 @@
     "pricing": {
       "input": "$0.10 / 1M tokens",
       "output": "$0.40 / 1M tokens",
-      "cache": "$0.01 / 1M tokens",
-      "longContextThreshold": 200000,
-      "longContextInput": "$0.10 / 1M tokens",
-      "longContextOutput": "$0.40 / 1M tokens",
-      "longContextCache": "$0.01 / 1M tokens"
+      "cache": "$0.01 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "1M tokens",
@@ -644,11 +632,7 @@
     "pricing": {
       "input": "$0.30 / 1M tokens",
       "output": "$2.50 / 1M tokens",
-      "cache": "$0.03 / 1M tokens",
-      "longContextThreshold": 200000,
-      "longContextInput": "$0.30 / 1M tokens",
-      "longContextOutput": "$2.50 / 1M tokens",
-      "longContextCache": "$0.03 / 1M tokens"
+      "cache": "$0.03 / 1M tokens"
     },
     "version": "2025-11-04",
     "contextWindow": "1M tokens",

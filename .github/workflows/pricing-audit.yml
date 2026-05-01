@@ -1,0 +1,95 @@
+name: "Pricing Audit"
+
+on:
+  schedule:
+    # Run daily at 08:00 UTC
+    - cron: "0 8 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pricing-audit
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run pricing audit
+        id: audit
+        env:
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL_NAME: ${{ vars.LLM_MODEL_NAME }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          PRICING_CONFIG_PATH: data/models-catalog.json
+        run: node scripts/pricing-audit.mjs
+
+      - name: Create pull request
+        id: create-pr
+        if: steps.audit.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update shared model catalog pricing"
+          title: "chore: pricing discrepancies detected in shared model catalog"
+          body-path: pricing-audit-summary.md
+          branch: automated/pricing-audit
+          delete-branch: true
+          labels: pricing,automated
+          add-paths: |
+            data/models-catalog.json
+
+      - name: Add review comments to PR
+        if: steps.create-pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER="${{ steps.create-pr.outputs.pull-request-number }}"
+          if [ ! -f pricing-audit-changes.json ]; then
+            echo "No changes file found, skipping review comments."
+            exit 0
+          fi
+
+          node << 'SCRIPT'
+          const fs = require('fs');
+          const changes = JSON.parse(fs.readFileSync('pricing-audit-changes.json', 'utf-8'));
+          const comments = changes
+            .filter(c => c.line != null)
+            .map(c => ({
+              path: c.path,
+              line: c.line,
+              side: 'RIGHT',
+              body: `**Pricing Update:** \`${c.model}.${c.field}\`\n\n` +
+                    `| | Value |\n|---|---|\n` +
+                    `| **Previous** | $${c.from} / 1M tokens |\n` +
+                    `| **Updated** | $${c.to} / 1M tokens |\n` +
+                    `| **Source** | ${c.source} |\n\n` +
+                    `**Reason:** ${c.note || 'Price discrepancy detected between upstream and config.'}`
+            }));
+          if (comments.length === 0) {
+            console.log('No line-level comments to post.');
+            process.exit(0);
+          }
+          const review = { event: 'COMMENT', comments };
+          fs.writeFileSync('review-payload.json', JSON.stringify(review));
+          console.log('Prepared ' + comments.length + ' review comment(s).');
+          SCRIPT
+
+          if [ -f review-payload.json ]; then
+            gh api \
+              "repos/${{ github.repository }}/pulls/${PR_NUMBER}/reviews" \
+              --input review-payload.json
+            echo "Posted review comments on PR #${PR_NUMBER}."
+          fi

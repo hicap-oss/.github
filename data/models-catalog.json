@@ -1,0 +1,927 @@
+[
+  {
+    "id": "gpt-5.2",
+    "name": "GPT-5.2",
+    "provider": "OpenAI",
+    "description": "Latest and most advanced GPT model with massive context window and superior reasoning capabilities.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.75 / 1M tokens",
+      "output": "$14.00 / 1M tokens",
+      "cache": "$0.175 / 1M tokens"
+    },
+    "version": "2025-12-23",
+    "contextWindow": "400K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5.2-chat-latest",
+    "name": "GPT-5.2 Chat",
+    "provider": "OpenAI",
+    "description": "Chat-optimized version of GPT-5.2 with lower latency for conversational AI.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$1.75 / 1M tokens",
+      "output": "$14.00 / 1M tokens",
+      "cache": "$0.175 / 1M tokens"
+    },
+    "version": "2025-12-23",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5.1",
+    "name": "GPT-5.1",
+    "provider": "OpenAI",
+    "description": "Advanced GPT-5 series model with exceptional performance across all tasks.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$0.125 / 1M tokens"
+    },
+    "version": "2025-12-23",
+    "contextWindow": "400K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5.1-chat-latest",
+    "name": "GPT-5.1 Chat",
+    "provider": "OpenAI",
+    "description": "Chat-focused GPT-5.1 with optimized response times.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$0.125 / 1M tokens"
+    },
+    "version": "2025-12-23",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5",
+    "name": "GPT-5",
+    "provider": "OpenAI",
+    "description": "Foundation GPT-5 model with breakthrough capabilities in reasoning and generation.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$0.125 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "400K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5-chat",
+    "name": "GPT-5 Chat",
+    "provider": "OpenAI",
+    "description": "Conversational variant of GPT-5 optimized for dialogue.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$0.125 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "400K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5-mini",
+    "name": "GPT-5 Mini",
+    "provider": "OpenAI",
+    "description": "Compact GPT-5 model balancing performance and efficiency.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.40 / 1M tokens",
+      "output": "$1.60 / 1M tokens",
+      "cache": "$0.10 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "400K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-5-nano",
+    "name": "GPT-5 Nano",
+    "provider": "OpenAI",
+    "description": "Smallest GPT-5 variant for ultra-fast responses and high throughput.",
+    "capabilities": ["text", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.10 / 1M tokens",
+      "output": "$0.40 / 1M tokens",
+      "cache": "$0.025 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "400K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go", "Reserved", "Demo"]
+  },
+  {
+    "id": "gpt-4o",
+    "name": "GPT-4o",
+    "provider": "OpenAI",
+    "description": "Multimodal GPT-4 model with vision, audio, and enhanced reasoning.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.50 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$1.25 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-4o-mini",
+    "name": "GPT-4o Mini",
+    "provider": "OpenAI",
+    "description": "Efficient GPT-4o variant for cost-effective multimodal applications.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.15 / 1M tokens",
+      "output": "$0.60 / 1M tokens",
+      "cache": "$0.075 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-4.1",
+    "name": "GPT-4.1",
+    "provider": "OpenAI",
+    "description": "Extended context GPT-4 with 1M token window for processing very long documents.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$8.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-4.1-mini",
+    "name": "GPT-4.1 Mini",
+    "provider": "OpenAI",
+    "description": "Compact version of GPT-4.1 maintaining the extended context window.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.40 / 1M tokens",
+      "output": "$1.60 / 1M tokens",
+      "cache": "$0.10 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gpt-4.1-nano",
+    "name": "GPT-4.1 Nano",
+    "provider": "OpenAI",
+    "description": "Ultra-efficient GPT-4.1 for high-speed processing of long contexts.",
+    "capabilities": ["text", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.10 / 1M tokens",
+      "output": "$0.40 / 1M tokens",
+      "cache": "$0.025 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-sonnet-4.5",
+    "name": "Claude Sonnet 4.5",
+    "provider": "Anthropic",
+    "description": "Latest Claude Sonnet with enhanced reasoning and expanded context.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$3 / 1M tokens",
+      "output": "$15 / 1M tokens",
+      "cache": "$0.30 / 1M tokens",
+      "cacheWrite": "$3.75 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$6.00 / 1M tokens",
+      "longContextOutput": "$22.50 / 1M tokens",
+      "longContextCache": "$0.60 / 1M tokens"
+    },
+    "version": "2025-12-19",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-haiku-4.5",
+    "name": "Claude Haiku 4.5",
+    "provider": "Anthropic",
+    "description": "Fastest Claude model with updated knowledge and improved speed.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$5.00 / 1M tokens",
+      "cache": "$0.10 / 1M tokens",
+      "cacheWrite": "$1.25 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved", "Demo"]
+  },
+  {
+    "id": "claude-opus-4.5",
+    "name": "Claude Opus 4.5",
+    "provider": "Anthropic",
+    "description": "Most powerful Claude model for the most demanding tasks.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$25.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "cacheWrite": "$6.25 / 1M tokens"
+    },
+    "version": "2025-12-19",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-opus-4.6",
+    "name": "Claude Opus 4.6",
+    "provider": "Anthropic",
+    "description": "Latest Opus model with enhanced long-context capabilities and improved performance.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$25.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "cacheWrite": "$6.25 / 1M tokens"
+    },
+    "version": "2026-02-05",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-sonnet-4",
+    "name": "Claude Sonnet 4",
+    "provider": "Anthropic",
+    "description": "Foundation Claude Sonnet 4 model with balanced performance and speed.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$3.00 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.30 / 1M tokens",
+      "cacheWrite": "$3.75 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$6.00 / 1M tokens",
+      "longContextOutput": "$22.50 / 1M tokens",
+      "longContextCache": "$0.60 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-opus-4.1",
+    "name": "Claude Opus 4.1",
+    "provider": "Anthropic",
+    "description": "Advanced Opus variant with superior performance on complex reasoning.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$15.00 / 1M tokens",
+      "output": "$75.00 / 1M tokens",
+      "cache": "$1.50 / 1M tokens",
+      "cacheWrite": "$18.75 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-opus-4",
+    "name": "Claude Opus 4",
+    "provider": "Anthropic",
+    "description": "Foundation Claude Opus 4 model for enterprise-grade applications.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$15.00 / 1M tokens",
+      "output": "$75.00 / 1M tokens",
+      "cache": "$1.50 / 1M tokens",
+      "cacheWrite": "$18.75 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-3.7-sonnet",
+    "name": "Claude 3.7 Sonnet",
+    "provider": "Anthropic",
+    "description": "Enhanced Claude 3 Sonnet with improved capabilities and larger output.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$3.00 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.30 / 1M tokens",
+      "cacheWrite": "$3.75 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-3.5-sonnet",
+    "name": "Claude 3.5 Sonnet",
+    "provider": "Anthropic",
+    "description": "Balanced Claude 3.5 for production workloads with vision support.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$3.00 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.30 / 1M tokens",
+      "cacheWrite": "$3.75 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-3.5-haiku",
+    "name": "Claude 3.5 Haiku",
+    "provider": "Anthropic",
+    "description": "Fast and efficient Claude 3.5 for high-throughput applications.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$0.80 / 1M tokens",
+      "output": "$4.00 / 1M tokens",
+      "cache": "$0.08 / 1M tokens",
+      "cacheWrite": "$1.00 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-3-pro-preview",
+    "name": "Gemini 3 Pro",
+    "provider": "Google",
+    "description": "Next-generation Gemini with breakthrough multimodal capabilities.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$12.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$18.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2025-12-19",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-3-pro-image-preview",
+    "name": "Gemini 3 Pro Image",
+    "provider": "Google",
+    "description": "Specialized Gemini 3 variant optimized for image understanding and generation tasks.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$12.00 / 1M tokens"
+    },
+    "version": "2025-01-27",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-3-flash-preview",
+    "name": "Gemini 3 Flash",
+    "provider": "Google",
+    "description": "Ultra-fast Gemini 3 optimized for low-latency applications.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.50 / 1M tokens",
+      "output": "$3.00 / 1M tokens",
+      "cache": "$0.05 / 1M tokens"
+    },
+    "version": "2025-12-19",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-2.5-pro",
+    "name": "Gemini 2.5 Pro",
+    "provider": "Google",
+    "description": "Advanced Gemini 2.5 Pro with enhanced reasoning and multimodal capabilities.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$0.125 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$2.50 / 1M tokens",
+      "longContextOutput": "$15.00 / 1M tokens",
+      "longContextCache": "$0.25 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-2.5-flash",
+    "name": "Gemini 2.5 Flash",
+    "provider": "Google",
+    "description": "Latest Gemini Flash with extended context and improved performance.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.30 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
+      "cache": "$0.03 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "65K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-2.5-flash-lite",
+    "name": "Gemini 2.5 Flash Lite",
+    "provider": "Google",
+    "description": "Lightweight Gemini 2.5 for cost-effective deployments.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.10 / 1M tokens",
+      "output": "$0.40 / 1M tokens",
+      "cache": "$0.01 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved", "Demo"]
+  },
+  {
+    "id": "gemini-2.0-flash",
+    "name": "Gemini 2.0 Flash",
+    "provider": "Google",
+    "description": "Production Gemini 2.0 with excellent speed-to-quality ratio.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.10 / 1M tokens",
+      "output": "$0.40 / 1M tokens",
+      "cache": "$0.025 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-2.0-flash-lite",
+    "name": "Gemini 2.0 Flash Lite",
+    "provider": "Google",
+    "description": "Efficient Gemini 2.0 variant for high-volume use cases.",
+    "capabilities": ["text", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.075 / 1M tokens",
+      "output": "$0.30 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "claude-sonnet-4.6",
+    "name": "Claude Sonnet 4.6",
+    "provider": "Anthropic",
+    "description": "Latest Claude Sonnet with cutting-edge reasoning and expanded capabilities.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$3.00 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.30 / 1M tokens",
+      "cacheWrite": "$3.75 / 1M tokens"
+    },
+    "version": "2026-02-17",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-2.5-flash-preview",
+    "name": "Gemini 2.5 Flash Preview",
+    "provider": "Google",
+    "description": "Preview release of Gemini 2.5 Flash with latest experimental features.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.30 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
+      "cache": "$0.03 / 1M tokens"
+    },
+    "version": "2025-11-04",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "65K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-3.1-pro",
+    "name": "Gemini 3.1 Pro",
+    "provider": "Google",
+    "description": "Latest stable Gemini Pro with advanced reasoning and multimodal support.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$12.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$18.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-02-19",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "gemini-3.1-pro-preview",
+    "name": "Gemini 3.1 Pro Preview",
+    "provider": "Google",
+    "description": "Preview release of Gemini 3.1 Pro with cutting-edge experimental features.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$12.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$18.00 / 1M tokens",
+      "longContextCache": "$0.40 / 1M tokens"
+    },
+    "version": "2026-02-19",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
+    "id": "kimi-k2.5",
+    "name": "Kimi K2.5",
+    "provider": "Moonshot",
+    "description": "Powerful multilingual model from Moonshot AI with strong coding and reasoning capabilities.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.60 / 1M tokens",
+      "output": "$3.00 / 1M tokens",
+      "cache": "$0.10 / 1M tokens"
+    },
+    "version": "2026-02-18",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "glm-5",
+    "name": "GLM-5",
+    "provider": "Zhipu",
+    "description": "Zhipu's flagship large language model with strong bilingual capabilities in Chinese and English.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$3.20 / 1M tokens"
+    },
+    "version": "2026-02-20",
+    "contextWindow": "128K tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.3-codex",
+    "name": "GPT-5.3 Codex",
+    "provider": "OpenAI",
+    "description": "OpenAI's latest code-optimized model with superior code generation and understanding.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.75 / 1M tokens",
+      "output": "$14.00 / 1M tokens",
+      "cache": "$0.175 / 1M tokens"
+    },
+    "version": "2026-02-25",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.3-chat-latest",
+    "name": "GPT-5.3 Chat Latest",
+    "provider": "OpenAI",
+    "description": "The latest GPT-5.3 chat model with cutting-edge conversational intelligence.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat"],
+    "pricing": {
+      "input": "$1.75 / 1M tokens",
+      "output": "$14.00 / 1M tokens",
+      "cache": "$0.175 / 1M tokens"
+    },
+    "version": "2026-03-04",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.4",
+    "name": "GPT-5.4",
+    "provider": "OpenAI",
+    "description": "OpenAI's frontier model for complex professional work with reasoning token support. Reasoning.effort supports none, low, medium, high, and xhigh.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.50 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.25 / 1M tokens",
+      "longContextThreshold": 272000,
+      "longContextInput": "$5.00 / 1M tokens",
+      "longContextOutput": "$22.50 / 1M tokens"
+    },
+    "version": "2026-03-05",
+    "contextWindow": "1.05M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.1-flash-image-preview",
+    "name": "Gemini 3.1 Flash Image",
+    "provider": "Google",
+    "description": "Preview Gemini 3.1 Flash with advanced image generation and understanding capabilities.",
+    "capabilities": ["text", "vision", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.50 / 1M tokens",
+      "output": "$3.00 / 1M tokens"
+    },
+    "version": "2026-02-26",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "minimax-m2.5",
+    "name": "MiniMax M2.5",
+    "provider": "MiniMax",
+    "description": "A 230B MoE model with 10B active parameters, trained via large-scale reinforcement learning across 200,000+ real-world environments. SOTA in coding, agentic tool use, search, and office productivity workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.30 / 1M tokens",
+      "output": "$1.20 / 1M tokens"
+    },
+    "version": "2026-03-05",
+    "contextWindow": "205K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "eleven_v3",
+    "name": "Eleven v3",
+    "provider": "ElevenLabs",
+    "description": "ElevenLabs' most emotionally rich, expressive speech synthesis model with dramatic delivery, multi-speaker dialogue support, and 70+ supported languages.",
+    "capabilities": ["audio", "streaming"],
+    "endpoints": ["text-to-speech"],
+    "pricing": {
+      "input": "$0.17 / 1K chars",
+      "output": "$0.18 / 1K chars over 1K"
+    },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Overage"
+    },
+    "version": "2026-04-01",
+    "contextWindow": "5,000 chars",
+    "availability": "Available",
+    "maxTokens": "70+ languages",
+    "specDisplay": {
+      "primaryLabel": "Input Limit",
+      "secondaryLabel": "Languages"
+    },
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "eleven_multilingual_v2",
+    "name": "Eleven Multilingual v2",
+    "provider": "ElevenLabs",
+    "description": "Lifelike, consistent speech synthesis model with natural-sounding output across 29 languages and strong stability for long-form generations.",
+    "capabilities": ["audio", "streaming"],
+    "endpoints": ["text-to-speech"],
+    "pricing": {
+      "input": "$0.17 / 1K chars",
+      "output": "$0.18 / 1K chars over 1K"
+    },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Overage"
+    },
+    "version": "2026-04-01",
+    "contextWindow": "10,000 chars",
+    "availability": "Available",
+    "maxTokens": "29 languages",
+    "specDisplay": {
+      "primaryLabel": "Input Limit",
+      "secondaryLabel": "Languages"
+    },
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "scribe_v1",
+    "name": "Scribe v1",
+    "provider": "ElevenLabs",
+    "description": "Speech-to-text model for audio transcription across 90+ languages with word-level timestamp support.",
+    "capabilities": ["audio"],
+    "endpoints": ["speech-to-text"],
+    "pricing": {
+      "input": "$0.30 / audio hour",
+      "output": "$0.33 / audio hour after first hour"
+    },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Overage"
+    },
+    "version": "2026-04-04",
+    "contextWindow": "90+ languages",
+    "availability": "Available",
+    "maxTokens": "Audio transcription",
+    "specDisplay": {
+      "primaryLabel": "Languages",
+      "secondaryLabel": "Use Case"
+    },
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "scribe_v2",
+    "name": "Scribe v2",
+    "provider": "ElevenLabs",
+    "description": "State-of-the-art speech recognition model with accurate transcription in 90+ languages, keyterm prompting, speaker diarization, and dynamic audio tagging.",
+    "capabilities": ["audio"],
+    "endpoints": ["speech-to-text"],
+    "pricing": {
+      "input": "$0.30 / audio hour",
+      "output": "$0.33 / audio hour after first hour"
+    },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Overage"
+    },
+    "version": "2026-04-04",
+    "contextWindow": "90+ languages",
+    "availability": "Available",
+    "maxTokens": "Keyterms + diarization",
+    "specDisplay": {
+      "primaryLabel": "Languages",
+      "secondaryLabel": "Features"
+    },
+    "tags": ["Pay-Go"]
+  }
+]

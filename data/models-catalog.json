@@ -1002,7 +1002,7 @@
     "name": "AI Studio Gemini 3 Pro",
     "provider": "Google",
     "description": "AI Studio Gemini 3 Pro variant priced for Google AI Studio usage.",
-    "capabilities": ["text", "vision", "audio", "function-calling", "streaming"],
+    "capabilities": ["text", "vision", "audio", "function-calling", "agentic coding", "streaming"],
     "endpoints": ["chat", "completion"],
     "pricing": {
       "input": "$2.00 / 1M tokens",
@@ -1403,7 +1403,7 @@
     "name": "GPT-5.5 Pro",
     "provider": "OpenAI",
     "description": "Higher-compute GPT-5.5 variant for the most demanding reasoning and precision workloads.",
-    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "capabilities": ["text", "vision", "function-calling", "agentic coding", "streaming"],
     "endpoints": ["chat", "completion"],
     "pricing": {
       "input": "$30.00 / 1M tokens",

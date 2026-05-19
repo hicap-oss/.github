@@ -530,6 +530,25 @@
     "tags": ["Pay-Go", "Reserved"]
   },
   {
+    "id": "gemini-3.5-flash",
+    "name": "Gemini 3.5 Flash",
+    "provider": "Google",
+    "description": "Frontier Gemini Flash model optimized for fast agentic workflows, coding, and multimodal reasoning.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.50 / 1M tokens",
+      "output": "$9.00 / 1M tokens",
+      "cache": "$0.15 / 1M tokens"
+    },
+    "version": "2026-05-19",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
     "id": "gemini-2.5-pro",
     "name": "Gemini 2.5 Pro",
     "provider": "Google",

@@ -867,6 +867,20 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "minimax-m2.7",
+    "name": "MiniMax M2.7",
+    "provider": "MiniMax",
+    "description": "MiniMax M2 series model for coding, agentic tool use, search, and office productivity workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": { "input": "$0.30 / 1M tokens", "output": "$1.20 / 1M tokens" },
+    "version": "2026-05-15",
+    "contextWindow": "205K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "eleven_v3",
     "name": "Eleven v3",
     "provider": "ElevenLabs",
@@ -875,9 +889,15 @@
     "endpoints": ["text-to-speech"],
     "pricing": {
       "input": "$0.17 / 1K chars",
-      "output": "$0.18 / 1K chars over 1K"
+      "output": "$0.00 / 1K chars",
+      "inputThreshold": 1000,
+      "additionalInput": "$0.18 / 1K chars over 1K"
     },
-    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Output",
+      "additionalInputLabel": "Overage"
+    },
     "version": "2026-04-01",
     "contextWindow": "5,000 chars",
     "availability": "Available",
@@ -897,9 +917,15 @@
     "endpoints": ["text-to-speech"],
     "pricing": {
       "input": "$0.17 / 1K chars",
-      "output": "$0.18 / 1K chars over 1K"
+      "output": "$0.00 / 1K chars",
+      "inputThreshold": 1000,
+      "additionalInput": "$0.18 / 1K chars over 1K"
     },
-    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Output",
+      "additionalInputLabel": "Overage"
+    },
     "version": "2026-04-01",
     "contextWindow": "10,000 chars",
     "availability": "Available",
@@ -919,9 +945,15 @@
     "endpoints": ["speech-to-text"],
     "pricing": {
       "input": "$0.30 / audio hour",
-      "output": "$0.33 / audio hour after first hour"
+      "output": "$0.00 / audio hour",
+      "inputThreshold": 3600000,
+      "additionalInput": "$0.33 / audio hour after first hour"
     },
-    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Output",
+      "additionalInputLabel": "Overage"
+    },
     "version": "2026-04-04",
     "contextWindow": "90+ languages",
     "availability": "Available",
@@ -941,9 +973,15 @@
     "endpoints": ["speech-to-text"],
     "pricing": {
       "input": "$0.30 / audio hour",
-      "output": "$0.33 / audio hour after first hour"
+      "output": "$0.00 / audio hour",
+      "inputThreshold": 3600000,
+      "additionalInput": "$0.33 / audio hour after first hour"
     },
-    "pricingDisplay": { "inputLabel": "Base", "outputLabel": "Overage" },
+    "pricingDisplay": {
+      "inputLabel": "Base",
+      "outputLabel": "Output",
+      "additionalInputLabel": "Overage"
+    },
     "version": "2026-04-04",
     "contextWindow": "90+ languages",
     "availability": "Available",
@@ -994,6 +1032,119 @@
     "contextWindow": "200K tokens",
     "availability": "Available",
     "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "claude-opus-4.8",
+    "name": "Claude Opus 4.8",
+    "provider": "Anthropic",
+    "description": "Latest Claude Opus model for enterprise-grade reasoning, coding, and agentic workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$25.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "cacheWrite": "$6.25 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$5.00 / 1M tokens",
+      "longContextOutput": "$25.00 / 1M tokens",
+      "longContextCache": "$0.50 / 1M tokens"
+    },
+    "version": "2026-05-28",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "grok-4.3",
+    "name": "Grok 4.3",
+    "provider": "xAI",
+    "description": "xAI Grok model for general chat, reasoning, and tool-assisted workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
+      "cache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-05-27",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "grok-4.20-reasoning",
+    "name": "Grok 4.20 Reasoning",
+    "provider": "xAI",
+    "description": "Reasoning-optimized Grok 4.20 variant for complex analysis and problem solving.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
+      "cache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-05-27",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "grok-4.20-non-reasoning",
+    "name": "Grok 4.20 Non-Reasoning",
+    "provider": "xAI",
+    "description": "Lower-latency Grok 4.20 variant for standard chat and generation workloads.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$2.50 / 1M tokens",
+      "cache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-05-27",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "grok-4.1-fast-reasoning",
+    "name": "Grok 4.1 Fast Reasoning",
+    "provider": "xAI",
+    "description": "Fast reasoning Grok 4.1 variant for responsive analysis and tool-assisted workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.20 / 1M tokens",
+      "output": "$0.50 / 1M tokens",
+      "cache": "$0.05 / 1M tokens"
+    },
+    "version": "2026-05-27",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "grok-4.1-fast-non-reasoning",
+    "name": "Grok 4.1 Fast Non-Reasoning",
+    "provider": "xAI",
+    "description": "Fast Grok 4.1 variant for low-latency chat and generation workloads.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.20 / 1M tokens",
+      "output": "$0.50 / 1M tokens",
+      "cache": "$0.05 / 1M tokens"
+    },
+    "version": "2026-05-27",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
     "tags": ["Pay-Go"]
   },
   {

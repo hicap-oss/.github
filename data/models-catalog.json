@@ -1012,6 +1012,26 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "claude-fable-5",
+    "name": "Claude Fable 5",
+    "provider": "Anthropic",
+    "description": "Anthropic's Mythos-class model for advanced coding, reasoning, knowledge work, and vision with built-in safety guardrails.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$10.00 / 1M tokens",
+      "output": "$50.00 / 1M tokens",
+      "cache": "$1.00 / 1M tokens",
+      "cacheWrite": "$12.50 / 1M tokens"
+    },
+    "version": "2026-06-09",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "claude-opus-4.7",
     "name": "Claude Opus 4.7",
     "provider": "Anthropic",

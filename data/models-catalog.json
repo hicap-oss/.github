@@ -770,6 +770,24 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "kimi-k2.7-code",
+    "name": "Kimi K2.7 Code",
+    "provider": "Moonshot",
+    "description": "Code-optimized Kimi model from Moonshot AI for agentic software engineering and long-context coding workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.95 / 1M tokens",
+      "output": "$4.00 / 1M tokens",
+      "cache": "$0.19 / 1M tokens"
+    },
+    "version": "2026-06-13",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "8K",
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "glm-5",
     "name": "GLM-5",
     "provider": "Zhipu",
@@ -876,6 +894,24 @@
     "pricing": { "input": "$0.30 / 1M tokens", "output": "$1.20 / 1M tokens" },
     "version": "2026-05-15",
     "contextWindow": "205K tokens",
+    "availability": "Available",
+    "maxTokens": "16K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "minimax-m3",
+    "name": "MiniMax M3",
+    "provider": "MiniMax",
+    "description": "MiniMax M3 model for long-context coding, multimodal, and agentic workflows served through Together AI.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.30 / 1M tokens",
+      "output": "$1.20 / 1M tokens",
+      "cache": "$0.06 / 1M tokens"
+    },
+    "version": "2026-06-13",
+    "contextWindow": "1M tokens",
     "availability": "Available",
     "maxTokens": "16K",
     "tags": ["Pay-Go"]

@@ -802,6 +802,24 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "glm-5.1",
+    "name": "GLM-5.1",
+    "provider": "Zhipu",
+    "description": "Z.ai's post-training upgrade to GLM-5 for agentic engineering, coding, tool calling, and structured JSON workflows.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.40 / 1M tokens",
+      "output": "$4.40 / 1M tokens",
+      "cache": "$0.26 / 1M tokens"
+    },
+    "version": "2026-06-13",
+    "contextWindow": "200K tokens",
+    "availability": "Available",
+    "maxTokens": "32K",
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "gpt-5.3-codex",
     "name": "GPT-5.3 Codex",
     "provider": "OpenAI",

@@ -1850,5 +1850,23 @@
     "availability": "Available",
     "maxTokens": "32K",
     "tags": ["Pay-Go"]
+  },
+  {
+    "id": "deepseek-v4-pro",
+    "name": "DeepSeek V4 Pro",
+    "provider": "DeepSeek",
+    "description": "DeepSeek's 1.6T parameter MoE model for long-context reasoning, coding, and agentic automation served through Together AI.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.10 / 1M tokens",
+      "output": "$4.40 / 1M tokens",
+      "cache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-06-13",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "384K",
+    "tags": ["Pay-Go"]
   }
 ]

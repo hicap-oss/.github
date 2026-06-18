@@ -820,6 +820,24 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "glm-5.2",
+    "name": "GLM-5.2",
+    "provider": "Zhipu",
+    "description": "Z.ai's flagship GLM-5.2 model for long-horizon coding, repo-scale engineering, and complex agentic automation.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.40 / 1M tokens",
+      "output": "$4.40 / 1M tokens",
+      "cache": "$0.26 / 1M tokens"
+    },
+    "version": "2026-06-18",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "gpt-5.3-codex",
     "name": "GPT-5.3 Codex",
     "provider": "OpenAI",

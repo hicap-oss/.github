@@ -1104,6 +1104,26 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "claude-sonnet-5",
+    "name": "Claude Sonnet 5",
+    "provider": "Anthropic",
+    "description": "Latest Claude Sonnet model with fast, high-intelligence reasoning and 1M-token context.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$10.00 / 1M tokens",
+      "cache": "$0.20 / 1M tokens",
+      "cacheWrite": "$2.50 / 1M tokens"
+    },
+    "version": "2026-06-30",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "claude-opus-4.7",
     "name": "Claude Opus 4.7",
     "provider": "Anthropic",

@@ -19,6 +19,73 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "gpt-5.6-sol",
+    "name": "GPT-5.6 Sol",
+    "provider": "OpenAI",
+    "description": "OpenAI's flagship GPT-5.6 model for complex professional work, advanced reasoning, and coding.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$30.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "longContextThreshold": 272000,
+      "longContextInput": "$10.00 / 1M tokens",
+      "longContextOutput": "$45.00 / 1M tokens",
+      "longContextCache": "$1.00 / 1M tokens"
+    },
+    "version": "2026-07-09",
+    "contextWindow": "1.05M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.6-terra",
+    "name": "GPT-5.6 Terra",
+    "provider": "OpenAI",
+    "description": "GPT-5.6 model that balances intelligence and cost for professional reasoning and coding workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.50 / 1M tokens",
+      "output": "$15.00 / 1M tokens",
+      "cache": "$0.25 / 1M tokens",
+      "longContextThreshold": 272000,
+      "longContextInput": "$5.00 / 1M tokens",
+      "longContextOutput": "$22.50 / 1M tokens",
+      "longContextCache": "$0.50 / 1M tokens"
+    },
+    "version": "2026-07-09",
+    "contextWindow": "1.05M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gpt-5.6-luna",
+    "name": "GPT-5.6 Luna",
+    "provider": "OpenAI",
+    "description": "Cost-sensitive GPT-5.6 model for high-volume reasoning and coding workloads.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.10 / 1M tokens",
+      "longContextThreshold": 272000,
+      "longContextInput": "$2.00 / 1M tokens",
+      "longContextOutput": "$9.00 / 1M tokens",
+      "longContextCache": "$0.20 / 1M tokens"
+    },
+    "version": "2026-07-09",
+    "contextWindow": "1.05M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "gpt-5.2",
     "name": "GPT-5.2",
     "provider": "OpenAI",
@@ -1185,6 +1252,28 @@
     "contextWindow": "256K tokens",
     "availability": "Available",
     "maxTokens": "32K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "grok-4.5",
+    "name": "Grok 4.5",
+    "provider": "xAI",
+    "description": "xAI's flagship model for code, agentic tool calling, and configurable reasoning.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$12.00 / 1M tokens",
+      "longContextCache": "$1.00 / 1M tokens"
+    },
+    "version": "2026-07-08",
+    "contextWindow": "500K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
     "tags": ["Pay-Go"]
   },
   {

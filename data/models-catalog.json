@@ -2013,5 +2013,41 @@
     "availability": "Available",
     "maxTokens": "384K",
     "tags": ["Pay-Go"]
+  },
+  {
+    "id": "muse-spark-1.1",
+    "name": "Muse Spark 1.1",
+    "provider": "Meta",
+    "description": "Meta's multimodal reasoning model for coding, computer use, tool orchestration, and long-running agentic workflows.",
+    "capabilities": ["text", "vision", "audio", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.25 / 1M tokens",
+      "output": "$4.25 / 1M tokens",
+      "cache": "$0.15 / 1M tokens"
+    },
+    "version": "2026-07-09",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "hy3:free",
+    "name": "Hy3 Free",
+    "provider": "Tencent",
+    "description": "Tencent Hunyuan's Hy3 model for complex reasoning, coding, instruction following, and agentic tool use.",
+    "capabilities": ["text", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.00 / 1M tokens",
+      "output": "$0.00 / 1M tokens",
+      "cache": "$0.00 / 1M tokens"
+    },
+    "version": "2026-07-07",
+    "contextWindow": "256K tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "tags": ["Free"]
   }
 ]

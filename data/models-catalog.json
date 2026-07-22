@@ -619,6 +619,31 @@
     "tags": ["Pay-Go", "Reserved"]
   },
   {
+    "id": "gemini-3.6-flash",
+    "name": "Gemini 3.6 Flash",
+    "provider": "Google",
+    "description": "Fast Gemini model optimized for agentic orchestration, code generation, and multimodal reasoning.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$1.50 / 1M tokens",
+      "output": "$7.50 / 1M tokens",
+      "cache": "$0.15 / 1M tokens"
+    },
+    "version": "2026-07-21",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "64K",
+    "featured": true,
+    "tags": ["Pay-Go", "Reserved"]
+  },
+  {
     "id": "gemini-2.5-pro",
     "name": "Gemini 2.5 Pro",
     "provider": "Google",
@@ -1542,6 +1567,30 @@
     "version": "2026-04-16",
     "contextWindow": "1M tokens",
     "availability": "Preview",
+    "maxTokens": "64K",
+    "tags": ["Pay-Go"]
+  },
+  {
+    "id": "gemini-3.6-flash-batch",
+    "name": "Gemini 3.6 Flash Batch",
+    "provider": "Google",
+    "description": "Batch-priced Gemini 3.6 Flash model for asynchronous high-volume workloads.",
+    "capabilities": [
+      "text",
+      "vision",
+      "audio",
+      "function-calling",
+      "streaming"
+    ],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$0.75 / 1M tokens",
+      "output": "$3.75 / 1M tokens",
+      "cache": "$0.075 / 1M tokens"
+    },
+    "version": "2026-07-21",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
     "maxTokens": "64K",
     "tags": ["Pay-Go"]
   },

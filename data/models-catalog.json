@@ -1219,6 +1219,26 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "claude-opus-5",
+    "name": "Claude Opus 5",
+    "provider": "Anthropic",
+    "description": "Latest Claude Opus model for complex agentic coding and enterprise work.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$5.00 / 1M tokens",
+      "output": "$25.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "cacheWrite": "$6.25 / 1M tokens"
+    },
+    "version": "2026-07-24",
+    "contextWindow": "1M tokens",
+    "availability": "Available",
+    "maxTokens": "128K",
+    "featured": true,
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "claude-opus-4.7",
     "name": "Claude Opus 4.7",
     "provider": "Anthropic",

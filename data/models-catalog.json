@@ -1325,6 +1325,28 @@
     "tags": ["Pay-Go"]
   },
   {
+    "id": "grok-4.6",
+    "name": "Grok 4.6",
+    "provider": "xAI",
+    "description": "xAI frontier model for coding, agentic tasks, knowledge work, and configurable reasoning.",
+    "capabilities": ["text", "vision", "function-calling", "streaming"],
+    "endpoints": ["chat", "completion"],
+    "pricing": {
+      "input": "$2.00 / 1M tokens",
+      "output": "$6.00 / 1M tokens",
+      "cache": "$0.50 / 1M tokens",
+      "longContextThreshold": 200000,
+      "longContextInput": "$4.00 / 1M tokens",
+      "longContextOutput": "$12.00 / 1M tokens",
+      "longContextCache": "$1.00 / 1M tokens"
+    },
+    "version": "2026-08-12",
+    "contextWindow": "500K tokens",
+    "availability": "Available",
+    "maxTokens": "No fixed limit",
+    "tags": ["Pay-Go"]
+  },
+  {
     "id": "grok-4.20-reasoning",
     "name": "Grok 4.20 Reasoning",
     "provider": "xAI",

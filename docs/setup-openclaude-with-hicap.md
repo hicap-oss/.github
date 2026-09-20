@@ -61,7 +61,8 @@ You can return to `/provider` later to edit the Hicap profile, switch active pro
 
 Send a short prompt in OpenClaude. A reply confirms the Hicap backend is connected and routing correctly.
 
-To confirm the endpoint independently of OpenClaude:
+To confirm the endpoint independently of OpenClaude, replace `<your-model-id>` with the
+**Default model** you configured in step 3:
 
 - **Mac/Linux**:
 
@@ -71,20 +72,30 @@ To confirm the endpoint independently of OpenClaude:
     -H "api-key: $HICAP_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gpt-5.5",
+      "model": "<your-model-id>",
       "messages": [{"role": "user", "content": "Hello"}]
     }'
   ```
 
-- **Windows (PowerShell)**:
+- **Windows (PowerShell 7+)**:
 
   ```powershell
   $env:HICAP_API_KEY = "your-key-here"
   curl.exe https://api.hicap.ai/v1/chat/completions `
     -H "api-key: $env:HICAP_API_KEY" `
     -H "Content-Type: application/json" `
-    -d '{\"model\": \"gpt-5.5\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+    -d '{"model": "<your-model-id>", "messages": [{"role": "user", "content": "Hello"}]}'
   ```
+
+  > **Windows PowerShell 5.1**: 5.1 re-parses arguments before handing them to
+  > native executables, so the inner quotes must be escaped with backslashes:
+  >
+  > ```powershell
+  > curl.exe https://api.hicap.ai/v1/chat/completions `
+  >   -H "api-key: $env:HICAP_API_KEY" `
+  >   -H "Content-Type: application/json" `
+  >   -d '{\"model\": \"<your-model-id>\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  > ```
 
 ## Troubleshooting
 

@@ -195,14 +195,24 @@ To confirm the endpoint independently of the router:
     }'
   ```
 
-- **Windows (PowerShell)**:
+- **Windows (PowerShell 7+)**:
 
   ```powershell
   curl.exe https://api.hicap.ai/v1/chat/completions `
     -H "api-key: $env:HICAP_API_KEY" `
     -H "Content-Type: application/json" `
-    -d '{\"model\": \"<model-1>\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+    -d '{"model": "<model-1>", "messages": [{"role": "user", "content": "Hello"}]}'
   ```
+
+  > **Windows PowerShell 5.1**: 5.1 re-parses arguments before handing them to
+  > native executables, so the inner quotes must be escaped with backslashes:
+  >
+  > ```powershell
+  > curl.exe https://api.hicap.ai/v1/chat/completions `
+  >   -H "api-key: $env:HICAP_API_KEY" `
+  >   -H "Content-Type: application/json" `
+  >   -d '{\"model\": \"<model-1>\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  > ```
 
 ## Troubleshooting
 

@@ -40,6 +40,7 @@ llm = ChatOpenAI(
     base_url="https://api.hicap.ai/v1",
     api_key="dummy",
     default_headers={"api-key": os.environ["HICAP_API_KEY"]},
+    use_responses_api=False,
 )
 ```
 
@@ -49,6 +50,9 @@ llm = ChatOpenAI(
 | `base_url` | Hicap API endpoint |
 | `api_key` | Placeholder, required by the client and ignored by Hicap |
 | `default_headers` | The `api-key` header Hicap actually authenticates on |
+| `use_responses_api` | Pins the client to `/v1/chat/completions` |
+
+> **Note**: Keep `use_responses_api=False`. When it is unset, Python `ChatOpenAI` can infer the Responses API from the model name and call `/v1/responses`, which Hicap serves only as a developer preview. This guide is validated against the production `/v1/chat/completions` path.
 
 ### JavaScript / TypeScript
 

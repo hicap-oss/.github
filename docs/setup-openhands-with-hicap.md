@@ -71,19 +71,58 @@ conversation.run()
 
 A reply confirms the Hicap backend is connected and routing correctly. To confirm the endpoint independently of OpenHands:
 
-```bash
-curl https://api.hicap.ai/v1/chat/completions \
-  -H "api-key: $HICAP_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "claude-sonnet-4.6",
-    "messages": [{"role": "user", "content": "Hello"}]
-  }'
-```
+- **Mac/Linux**:
+
+  ```bash
+  curl https://api.hicap.ai/v1/chat/completions \
+    -H "api-key: $HICAP_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "claude-sonnet-4.6",
+      "messages": [{"role": "user", "content": "Hello"}]
+    }'
+  ```
+
+- **Windows (PowerShell)**:
+
+  ```powershell
+  curl.exe https://api.hicap.ai/v1/chat/completions `
+    -H "api-key: $env:HICAP_API_KEY" `
+    -H "Content-Type: application/json" `
+    -d '{\"model\": \"claude-sonnet-4.6\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  ```
 
 ## Legacy V0 config.toml
 
-If you are pinned to the legacy V0 release, the `[llm]` block cannot send custom headers. Run a LiteLLM proxy in front of Hicap that accepts a standard bearer token and re-issues requests with the `api-key` header, then point OpenHands at the proxy:
+If you are pinned to the legacy V0 release, the `[llm]` block cannot send custom headers. Run a LiteLLM proxy in front of Hicap that accepts a standard bearer token and re-issues requests with the `api-key` header, then point OpenHands at the proxy.
+
+First, create the proxy config. The `extra_headers` block is what converts a bearer-authenticated request into the `api-key` header Hicap requires:
+
+```yaml
+# litellm_config.yaml
+model_list:
+  - model_name: claude-sonnet-4.6
+    litellm_params:
+      model: openai/claude-sonnet-4.6
+      api_base: os.environ/HICAP_API_BASE
+      api_key: os.environ/HICAP_API_KEY
+      extra_headers:
+        api-key: os.environ/HICAP_API_KEY
+
+general_settings:
+  master_key: your-litellm-master-key
+```
+
+Start the proxy with your Hicap credentials in the environment:
+
+```bash
+pip install "litellm[proxy]"
+export HICAP_API_BASE="https://api.hicap.ai/v1"
+export HICAP_API_KEY="your-key-here"
+litellm --config litellm_config.yaml --port 4000
+```
+
+Then point OpenHands at it. The `api_key` here is the LiteLLM master key, not your Hicap key:
 
 ```toml
 [llm]
@@ -92,7 +131,7 @@ base_url = "http://localhost:4000"
 api_key = "your-litellm-master-key"
 ```
 
-See the LiteLLM setup guide for the proxy configuration.
+For more detail on running the proxy, see the [LiteLLM setup guide](./setup-liteLLM-with-hicap.md).
 
 ## Troubleshooting
 

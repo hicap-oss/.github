@@ -62,17 +62,30 @@ The equivalent stored profile looks like this:
 
 Save the profile and send a short prompt in the Roo Code chat panel. A reply confirms the Hicap backend is connected and routing correctly.
 
-To confirm the endpoint independently of Roo Code:
+To confirm the endpoint independently of Roo Code, substitute your Hicap key for `$HICAP_API_KEY` or export it first:
 
-```bash
-curl https://api.hicap.ai/v1/chat/completions \
-  -H "api-key: $HICAP_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "claude-sonnet-4.6",
-    "messages": [{"role": "user", "content": "Hello"}]
-  }'
-```
+- **Mac/Linux**:
+
+  ```bash
+  export HICAP_API_KEY="your-key-here"
+  curl https://api.hicap.ai/v1/chat/completions \
+    -H "api-key: $HICAP_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "claude-sonnet-4.6",
+      "messages": [{"role": "user", "content": "Hello"}]
+    }'
+  ```
+
+- **Windows (PowerShell)**:
+
+  ```powershell
+  $env:HICAP_API_KEY = "your-key-here"
+  curl.exe https://api.hicap.ai/v1/chat/completions `
+    -H "api-key: $env:HICAP_API_KEY" `
+    -H "Content-Type: application/json" `
+    -d '{\"model\": \"claude-sonnet-4.6\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  ```
 
 ## Troubleshooting
 

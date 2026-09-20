@@ -30,7 +30,35 @@ The API key should **never** be committed in plain text. Supply it as an environ
 
 Hicap authenticates with a custom `api-key` header rather than the standard `Authorization: Bearer` header, so the base URL alone is not enough — you must also declare the header.
 
-Create `.aider.model.settings.yml` in your home directory or repository root:
+Aider reads model settings from `.aider.model.settings.yml` in your home directory or repository root. The file is **static YAML**: Aider does not expand `${VAR}` references, so the header value must be a literal key. Generate the file from your environment variable instead of hand-writing the secret.
+
+- **Mac/Linux**:
+
+  ```bash
+  cat > ~/.aider.model.settings.yml <<YAML
+  - name: aider/extra_params
+    extra_params:
+      api_base: https://api.hicap.ai/v1
+      api_key: dummy
+      extra_headers:
+        api-key: "$HICAP_API_KEY"
+  YAML
+  ```
+
+- **Windows (PowerShell)**:
+
+  ```powershell
+  @"
+  - name: aider/extra_params
+    extra_params:
+      api_base: https://api.hicap.ai/v1
+      api_key: dummy
+      extra_headers:
+        api-key: "$env:HICAP_API_KEY"
+  "@ | Set-Content -Path "$HOME\.aider.model.settings.yml" -Encoding utf8
+  ```
+
+The result is the same shape with your key substituted in:
 
 ```yaml
 - name: aider/extra_params
@@ -38,7 +66,7 @@ Create `.aider.model.settings.yml` in your home directory or repository root:
     api_base: https://api.hicap.ai/v1
     api_key: dummy
     extra_headers:
-      api-key: ${HICAP_API_KEY}
+      api-key: "your-key-here"
 ```
 
 | Field | Purpose |
@@ -49,6 +77,8 @@ Create `.aider.model.settings.yml` in your home directory or repository root:
 | `extra_headers.api-key` | The header Hicap actually authenticates on |
 
 > **Note**: `api_key` is a deliberate placeholder. Hicap validates only the `api-key` header, so the value here is never used. Do not put your real key in this field.
+
+> **Warning**: This file now contains your key in plain text. Keep it in your home directory, or if you place it in a repository, add `.aider.model.settings.yml` to `.gitignore` so it is never committed.
 
 ## 3. Launch Aider
 
@@ -78,15 +108,26 @@ A reply confirms the Hicap backend is connected and routing correctly.
 
 To confirm the endpoint independently of Aider:
 
-```bash
-curl https://api.hicap.ai/v1/chat/completions \
-  -H "api-key: $HICAP_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "claude-sonnet-4.6",
-    "messages": [{"role": "user", "content": "Hello"}]
-  }'
-```
+- **Mac/Linux**:
+
+  ```bash
+  curl https://api.hicap.ai/v1/chat/completions \
+    -H "api-key: $HICAP_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "claude-sonnet-4.6",
+      "messages": [{"role": "user", "content": "Hello"}]
+    }'
+  ```
+
+- **Windows (PowerShell)**:
+
+  ```powershell
+  curl.exe https://api.hicap.ai/v1/chat/completions `
+    -H "api-key: $env:HICAP_API_KEY" `
+    -H "Content-Type: application/json" `
+    -d '{\"model\": \"claude-sonnet-4.6\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  ```
 
 ## Troubleshooting
 

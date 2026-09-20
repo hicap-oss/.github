@@ -92,7 +92,7 @@ const MAX_PAGE_CHARS = 80_000;
 /** Approximate char budget per chunk. */
 const CHUNK_CHAR_LIMIT = 15_000;
 const MODEL_ID = process.env.LLM_MODEL_NAME || "gpt-4o";
-const OUTPUT_TOKEN_LIMIT = 8000;
+const OUTPUT_TOKEN_LIMIT = 32_000;
 // Chat-completions parameter dialect, detected at runtime from API errors and
 // reused for later calls so the whole audit adapts to the configured model.
 let tokenLimitField = "max_tokens";
@@ -714,7 +714,18 @@ async function callModel(messages, retries = 2) {
 
     if (res.ok) {
       const data = await res.json();
-      return data.choices[0].message.content;
+      const choice = data.choices?.[0];
+      // Reasoning models spend part of the completion budget on hidden
+      // reasoning tokens, so a truncated reply is easy to hit and would
+      // otherwise surface as an unrelated JSON parse error and be reported as
+      // "no discrepancies found". Treat it as a real failure instead.
+      if (choice?.finish_reason === "length") {
+        throw new Error(
+          `Model response truncated at ${OUTPUT_TOKEN_LIMIT} tokens; ` +
+            "raise OUTPUT_TOKEN_LIMIT or reduce CHUNK_CHAR_LIMIT",
+        );
+      }
+      return choice?.message?.content ?? "";
     }
 
     const body = await res.text();

@@ -506,23 +506,82 @@ function removeCatalogJsonField(rawJson, modelId, field) {
 // Web-scraping helpers
 // ============================================================================
 
+/**
+ * Raw-text elements: their contents are never prose, so a start tag with no
+ * matching end tag discards the remainder rather than leaking code as text.
+ */
+const RAW_TEXT_ELEMENTS = ["script", "style"];
+
+/** Boilerplate containers discarded along with their subtree. */
+const CONTAINER_ELEMENTS = ["nav", "footer", "header"];
+
+/**
+ * Named/numeric entities decoded by {@link decodeEntities}.
+ * Decoding happens in a single pass so that an already-escaped sequence such as
+ * `&amp;lt;` decodes to the literal text `&lt;` rather than being unescaped twice.
+ */
+const HTML_ENTITIES = {
+  "&nbsp;": " ",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": '"',
+  "&#39;": "'",
+  "&apos;": "'",
+  "&amp;": "&",
+};
+
+const ENTITY_PATTERN = new RegExp(Object.keys(HTML_ENTITIES).join("|"), "g");
+
+/** Decode the common HTML entities in one pass (no double-unescaping). */
+function decodeEntities(text) {
+  return text.replace(ENTITY_PATTERN, (entity) => HTML_ENTITIES[entity]);
+}
+
+/**
+ * Remove an element and its contents, repeating until the input is stable so
+ * that nested and adjacent occurrences are all discarded. The end-tag pattern
+ * tolerates whitespace as browsers do (`</script >`, `</style\n>`), and the body
+ * pattern refuses to span a nested start tag so the innermost element matches
+ * first. With `dropUnbalanced`, a start tag that has no matching end tag
+ * discards the rest of the input instead of leaking its contents.
+ */
+function dropElement(html, tagName, { dropUnbalanced = false } = {}) {
+  const startTag = `<${tagName}(?=[\\s/>])[^>]*>`;
+  const element = new RegExp(
+    `${startTag}(?:(?!<${tagName}[\\s/>])[\\s\\S])*?<\\s*/\\s*${tagName}\\s*>`,
+    "gi",
+  );
+  const selfClosing = new RegExp(`<${tagName}(?=[\\s/>])[^>]*/>`, "gi");
+
+  let previous;
+  let current = html.replace(selfClosing, " ");
+  do {
+    previous = current;
+    current = current.replace(element, " ");
+  } while (current !== previous);
+
+  if (dropUnbalanced) {
+    current = current.replace(new RegExp(`${startTag}[\\s\\S]*$`, "i"), " ");
+  }
+  return current;
+}
+
 /** Strip HTML tags and collapse whitespace to produce readable plain text. */
 function stripHtml(html) {
-  return html
-    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
-    .replace(/<nav[^>]*>[\s\S]*?<\/nav>/gi, "")
-    .replace(/<footer[^>]*>[\s\S]*?<\/footer>/gi, "")
-    .replace(/<header[^>]*>[\s\S]*?<\/header>/gi, "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, " ")
-    .trim();
+  let text = html.replace(/<!--[\s\S]*?-->/g, " ");
+
+  for (const tagName of RAW_TEXT_ELEMENTS) {
+    text = dropElement(text, tagName, { dropUnbalanced: true });
+  }
+  for (const tagName of CONTAINER_ELEMENTS) {
+    text = dropElement(text, tagName);
+  }
+
+  // Remove every remaining tag before decoding entities, so decoded `<` and `>`
+  // characters are never mistaken for markup.
+  text = text.replace(/<[^>]*>/g, " ");
+
+  return decodeEntities(text).replace(/\s+/g, " ").trim();
 }
 
 /**

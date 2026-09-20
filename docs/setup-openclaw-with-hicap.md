@@ -123,11 +123,12 @@ After updating `openclaw.json`, restart your OpenClaw gateway for the changes to
 
 Open the Control UI at your gateway endpoint (e.g., `https://your-gateway-host/overview`). You should see all the Hicap models listed and available for selection.
 
-To test from the command line:
+To test from the command line, using whatever token your gateway is configured to accept:
 
 ```bash
+export OPENCLAW_GATEWAY_TOKEN="your-gateway-token"
 curl -X POST https://your-gateway-host/v1/chat/completions \
-  -H "Authorization: Bearer $MOLTBOT_GATEWAY_TOKEN" \
+  -H "Authorization: Bearer $OPENCLAW_GATEWAY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "hicap/claude-opus-4.6",

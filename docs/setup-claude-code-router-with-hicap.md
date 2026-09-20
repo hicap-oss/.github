@@ -170,6 +170,50 @@ claude "Your prompt here"
 | `ccr model`       | Interactive CLI model selector |
 | `ccr preset list` | List available presets         |
 
+## Verify
+
+Check that the router is running and that Hicap is reachable through it:
+
+```shell
+ccr status
+ccr code "Reply with the single word: connected"
+```
+
+A reply confirms the Hicap backend is connected and routing correctly.
+
+To confirm the endpoint independently of the router:
+
+- **Mac/Linux**:
+
+  ```bash
+  curl https://api.hicap.ai/v1/chat/completions \
+    -H "api-key: $HICAP_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "<model-1>",
+      "messages": [{"role": "user", "content": "Hello"}]
+    }'
+  ```
+
+- **Windows (PowerShell 7+)**:
+
+  ```powershell
+  curl.exe https://api.hicap.ai/v1/chat/completions `
+    -H "api-key: $env:HICAP_API_KEY" `
+    -H "Content-Type: application/json" `
+    -d '{"model": "<model-1>", "messages": [{"role": "user", "content": "Hello"}]}'
+  ```
+
+  > **Windows PowerShell 5.1**: 5.1 re-parses arguments before handing them to
+  > native executables, so the inner quotes must be escaped with backslashes:
+  >
+  > ```powershell
+  > curl.exe https://api.hicap.ai/v1/chat/completions `
+  >   -H "api-key: $env:HICAP_API_KEY" `
+  >   -H "Content-Type: application/json" `
+  >   -d '{\"model\": \"<model-1>\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  > ```
+
 ## Troubleshooting
 
 1. **API Key Issues**: Ensure the `HICAP_API_KEY` environment variable is set, or replace `$HICAP_API_KEY` with your actual key in the config file.

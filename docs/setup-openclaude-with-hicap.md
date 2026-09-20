@@ -57,6 +57,35 @@ Press Enter through the final empty API key field. OpenClaude saves the provider
 
 You can return to `/provider` later to edit the Hicap profile, switch active providers, or delete the profile.
 
+## 5. Verify
+
+Send a short prompt in OpenClaude. A reply confirms the Hicap backend is connected and routing correctly.
+
+To confirm the endpoint independently of OpenClaude:
+
+- **Mac/Linux**:
+
+  ```bash
+  export HICAP_API_KEY="your-key-here"
+  curl https://api.hicap.ai/v1/chat/completions \
+    -H "api-key: $HICAP_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gpt-5.5",
+      "messages": [{"role": "user", "content": "Hello"}]
+    }'
+  ```
+
+- **Windows (PowerShell)**:
+
+  ```powershell
+  $env:HICAP_API_KEY = "your-key-here"
+  curl.exe https://api.hicap.ai/v1/chat/completions `
+    -H "api-key: $env:HICAP_API_KEY" `
+    -H "Content-Type: application/json" `
+    -d '{\"model\": \"gpt-5.5\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}]}'
+  ```
+
 ## Troubleshooting
 
 ### Authentication errors
@@ -73,3 +102,9 @@ You can return to `/provider` later to edit the Hicap profile, switch active pro
 ### OpenClaude uses the wrong provider
 
 Run `/provider`, choose **Set active provider**, then select **Hicap**.
+
+---
+
+For the latest setup instructions, see: https://github.com/Gitlawb/openclaude
+
+Questions? Reach out to [Hicap support](mailto:support@hicap.ai) or open an issue in the repository.

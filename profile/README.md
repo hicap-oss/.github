@@ -24,21 +24,41 @@ Hicap is a drop-in replacement for the OpenAI API. Point your existing client at
 ```javascript
 import OpenAI from "openai";
 
+// Set once per service so every request carries the same baseline attribution.
+const defaultTags = {
+  env: process.env.NODE_ENV === "production" ? "production" : "development",
+  system: "checkout-api",
+  channel: "web",
+};
+
 const client = new OpenAI({
   baseURL: "https://api.hicap.ai/v1",
   apiKey: process.env.HICAP_API_KEY,
-  defaultHeaders: { "api-key": process.env.HICAP_API_KEY },
+  defaultHeaders: {
+    "api-key": process.env.HICAP_API_KEY,
+    "x-hicap-tags": JSON.stringify(defaultTags),
+  },
 });
 
-const response = await client.chat.completions.create({
-  model: "gpt-5",
-  messages: [{ role: "user", content: "Hello!" }],
-});
+// Add per-call dimensions to pinpoint what a specific request was doing.
+const response = await client.chat.completions.create(
+  {
+    model: "gpt-5",
+    messages: [{ role: "user", content: "Hello!" }],
+  },
+  {
+    headers: {
+      "x-hicap-tags": JSON.stringify({ ...defaultTags, feature: "product-recommendations" }),
+    },
+  },
+);
 ```
 
 Swap providers with a single parameter change - OpenAI, Anthropic, Google Gemini, Moonshot, Zhipu, and MiniMax all share the same endpoint and SDK.
 
-See the [Developer Quickstart](https://docs.hicap.ai/quickstart) to make your first request, or browse [all supported models](https://hicap.ai/models).
+The `x-hicap-tags` header is how spend and usage get sliced. Set the stable dimensions (`env`, `system`, `channel`) once on the client, then add per-call dimensions like `feature` or `agent` where they matter. Requests that arrive without them land in **Unattributed Traffic**.
+
+See the [Developer Quickstart](https://docs.hicap.ai/quickstart) to make your first request, [Tags, Dimensions & Segments](https://docs.hicap.ai/concepts/tags-dimensions-segments) for the full attribution model, or browse [all supported models](https://hicap.ai/models).
 
 ## Projects
 

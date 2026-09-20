@@ -92,6 +92,11 @@ const MAX_PAGE_CHARS = 80_000;
 /** Approximate char budget per chunk. */
 const CHUNK_CHAR_LIMIT = 15_000;
 const MODEL_ID = process.env.LLM_MODEL_NAME || "gpt-4o";
+const OUTPUT_TOKEN_LIMIT = 8000;
+// Chat-completions parameter dialect, detected at runtime from API errors and
+// reused for later calls so the whole audit adapts to the configured model.
+let tokenLimitField = "max_tokens";
+let sendTemperature = true;
 const LLM_ENDPOINT = (() => {
   const base = (process.env.LLM_BASE_URL || "").replace(/\/+$/, "");
   if (!base) throw new Error("LLM_BASE_URL environment variable is required");
@@ -690,18 +695,21 @@ async function callModel(messages, retries = 2) {
   if (!token) throw new Error("LLM_API_KEY environment variable is required");
 
   for (let attempt = 0; attempt <= retries; attempt++) {
+    let adapted = false;
+    const payload = {
+      model: MODEL_ID,
+      messages,
+      [tokenLimitField]: OUTPUT_TOKEN_LIMIT,
+    };
+    if (sendTemperature) payload.temperature = 0;
+
     const res = await fetch(LLM_ENDPOINT, {
       method: "POST",
       headers: {
         "api-key": token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        model: MODEL_ID,
-        messages,
-        temperature: 0,
-        max_tokens: 8000,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (res.ok) {
@@ -720,6 +728,28 @@ async function callModel(messages, retries = 2) {
         continue;
       }
       throw new Error(`Content filter blocked after ${retries + 1} attempts`);
+    }
+
+    // Newer models reject `max_tokens` (requiring `max_completion_tokens`) and
+    // reject a non-default `temperature`. Gateways often report this as a
+    // generic invalid-request error without naming the parameter, so degrade
+    // the payload one step at a time and retry. The resolved dialect is reused
+    // for later calls, and these retries do not consume transient-error
+    // attempts.
+    if (res.status === 400) {
+      if (tokenLimitField === "max_tokens") {
+        tokenLimitField = "max_completion_tokens";
+        console.warn("  Request rejected; retrying with max_completion_tokens.");
+        adapted = true;
+      } else if (sendTemperature) {
+        sendTemperature = false;
+        console.warn("  Request rejected; retrying without temperature.");
+        adapted = true;
+      }
+      if (adapted) {
+        attempt--;
+        continue;
+      }
     }
 
     if (res.status === 429 && attempt < retries) {
